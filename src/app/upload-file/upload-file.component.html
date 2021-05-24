@@ -1,18 +1,18 @@
 <div class="">
     <div class="">
-        <mat-card>Simple card</mat-card>
+        <mat-card></mat-card>
     </div>
 </div>
 <div class="container" appDnd (fileDropped)="onFileDropped($event)">
     <input type="file" #fileDropRef id="fileDropRef" multiple (change)="fileBrowseHandler($event.target.files)" />
-    <img src="assets/cloud.png" width="70px" height="50px" alt="">
+    <i class="fas fa-cloud-upload-alt"></i>
     <h3>Drag and drop file here</h3>
     <h3>or</h3>
     <label for="fileDropRef">Browse for file</label>
 </div>
 <div class="files-list">
     <div class="single-file" *ngFor="let file of files; let i = index">
-        <img src="assets/img/dnd/ic-file.svg" width="45px" alt="file">
+        <img src="assets/file-icon.png" width="45px" alt="file">
         <div class="info">
             <h4 class="name">
                 {{ file?.name }}
@@ -23,10 +23,9 @@
             <app-progress [progress]="file?.progress"></app-progress>
         </div>
         <div class="example-button-container">
-            <button mat-fab color="primary" class="delete" width="20px" alt="file" (click)="deleteFile(i)" aria-label="Example icon button with a delete icon">
+            <button mat-fab color="primary" class="delete" width="15px" alt="file" (click)="deleteFile(i)" aria-label="Example icon button with a delete icon">
               <mat-icon>delete</mat-icon>
             </button>
-          </div>
-        <img src="assets/img/dnd/ic-delete-file.svg" class="delete" width="20px" alt="file" (click)="deleteFile(i)">
+        </div>
     </div>
 </div>
