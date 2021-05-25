@@ -1,3 +1,11 @@
+.mat-stepper-horizontal {
+  margin-top: 8px;
+}
+
+.mat-form-field {
+  margin-top: 16px;
+}
+
 .container {
   width: 50%;
   height: 42%;
@@ -22,11 +30,6 @@
   height: 50px;
   color: #008cff;
 }
-
-.fa-cloud-upload-alt:hover {
-  color: #01c86b
-}
-
 
 input {
   opacity: 0;
@@ -60,7 +63,7 @@ h3 {
 
 
 .files-list {
-  margin-top: 1.5rem;
+  margin: 1.5rem;
 }
 
 .single-file {
