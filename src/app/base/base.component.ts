@@ -1,12 +1,12 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
-  selector: 'app-upload-file',
-  templateUrl: './upload-file.component.html',
-  styleUrls: ['./upload-file.component.css']
+  selector: 'app-base',
+  templateUrl: './base.component.html',
+  styleUrls: ['./base.component.css']
 })
-export class UploadFileComponent implements OnInit {
-
+export class BaseComponent implements OnInit {
+  isLinear = false;
   constructor() { }
 
   ngOnInit(): void {
@@ -34,7 +34,7 @@ export class UploadFileComponent implements OnInit {
    */
   deleteFile(index: number) {
     if (this.files[index].progress < 100) {
-      console.log("Upload in progress.");
+      alert("Upload in progress.");
       return;
     }
     this.files.splice(index, 1);
@@ -88,5 +88,5 @@ export class UploadFileComponent implements OnInit {
     const i = Math.floor(Math.log(bytes) / Math.log(k));
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i];
   }
-
 }
+
