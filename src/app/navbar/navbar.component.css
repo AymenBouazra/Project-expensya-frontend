@@ -1,0 +1,16 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.navbar-link{
+    color: rgb(71, 135, 253);
+    border-radius: 15px;
+    margin: 5px;
+    background-color: rgb(255, 255, 255);
+}
+
+.navbar-link:hover{
+    color: white;
+    background-color: rgb(71, 135, 253);
+    border-radius: 15px;
+}
