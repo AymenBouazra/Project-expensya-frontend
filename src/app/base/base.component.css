@@ -7,13 +7,13 @@
 }
 
 .container {
-  width: 700px;
-  height: 500px;
+  width: auto;
+  height: 300px;
   padding: 2rem;
   text-align: center;
   border: 5px solid #008cff;
   position: relative;
-  margin: 30px auto;
+  margin: 30px;
   border-radius: 15px;
   display: flex;
   justify-content: space-around;
@@ -22,6 +22,67 @@
   background-color: #f3f3f3;
 }
 
+
+@media only screen and (max-width: 1120px) {
+  .container{
+    display: flex;
+    justify-content: space-around;
+    height: auto;
+  }
+  h3.dragAndDrop{
+    text-align: justify;
+    white-space: nowrap;
+    font-size: 4vw;
+    padding-bottom: 10px;
+  }
+  h3.browseFile{
+    width: 190px;
+    white-space: nowrap;
+    height: 50px;
+    font-size: 24px;
+    padding: 25px 10px 0px 10px;
+  }
+}
+
+@media only screen and (max-width: 400px){
+  
+  p.size{
+    font-size: 5vw;
+  }
+  h4.name{
+    font-size: 5vw;
+  }
+}
+@media only screen and (max-width: 765px) {
+  .container{
+    display: flex;
+    justify-content: space-around;
+    height: auto;
+  }
+  h3.dragAndDrop{
+    text-align: justify;
+    white-space: nowrap;
+    font-size: 4vw;
+    padding-bottom: 10px;
+  }
+  h3.browseFile{
+    white-space: nowrap;
+    width: 150px;
+    height: 50px;
+    font-size: 20px;
+    padding: 20px 8px 0px 8px;
+    margin: 15px auto 15px auto;
+  }
+  .single-file{
+    flex-direction: column;
+  }
+  button.submitFile{
+    
+    font-size:17px;
+  }
+}
+
+
 .container:hover {
   border: 5px solid #01c86b;
 }
@@ -29,6 +90,7 @@
 .fa-cloud-upload-alt {
   width: 60px;
   height: 50px;
+  margin-bottom: 10px;
   color: #008cff;
 }
 
@@ -51,6 +113,7 @@ input {
 .submitFile{
 margin-right: 20px;
 font-size: 25px;
+border-radius: 25px;
 background-color: #01c86b;
 color: rgb(217, 255, 231);
 }
@@ -59,28 +122,28 @@ section {
   display: table;
 }
 
-label {
+.browseFile {
   color: white;
   width: 210px;
   height: 70px;
   font-size: 28px;
-  font-weight: 450;
+  font-weight: 400;
   border-radius: 21.5px;
   background-color: #20b6db;
   padding: 35px 15px 0px 15px;
-
+  margin: auto;
 }
 
-h3 {
-  font-size: 45px;
+.dragAndDrop {
+  font-size: 40px;
+  margin: 10px auto 10px auto; 
   font-weight: 600;
   color: #38424c;
 }
 
-
-
 .files-list {
-  margin: 1.5rem;
+  margin : 0 10% 0 10%;
+
 }
 
 .single-file {
@@ -101,21 +164,23 @@ img.delete {
 }
 
 .name {
-  font-size: 14px;
+  font-size: 20px;
   font-weight: 500;
   color: #353f4a;
-  margin: 0;
+  margin: 11px 5px 0 0 ;
 }
 
 .size {
-  font-size: 12px;
+  font-size: 17px;
   font-weight: 500;
   color: #a4a4a4;
-  margin: 0;
-  margin-bottom: 0.25rem;
+  margin: 15px 5px 0 0;
 }
 
 .info {
-  width: 100%;
+  width: 250px;
   height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }

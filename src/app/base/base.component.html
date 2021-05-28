@@ -7,14 +7,14 @@
             <input type="file" #fileDropRef id="fileDropRef" multiple
                 (change)="fileBrowseHandler($event.target.files)" />
             <i for="fileDropRef" class="fas fa-cloud-upload-alt"></i>
-            <h3>Drag and drop file here</h3>
-            <h3>or</h3>
-            <label for="fileDropRef">Browse for file</label>
+            <h3 class="dragAndDrop">Drag and drop file here</h3>
+            <h3 class="dragAndDrop">or</h3>
+            <h3 for="fileDropRef" class="browseFile">Browse for file</h3>
         </div>
         <div class="files-list">
             <div class="single-file" *ngFor="let file of files; let i = index">
-                <img src="assets/file-icon.png" width="45px" alt="file">
                 <div class="info">
+                    <img src="assets/file-icon.png" width="45px" alt="file">
                     <h4 class="name">
                         {{ file?.name }}
                     </h4>
