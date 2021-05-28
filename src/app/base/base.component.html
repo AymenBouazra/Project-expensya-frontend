@@ -2,7 +2,7 @@
     {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
 </button>
 <mat-horizontal-stepper [linear]="isLinear" #stepper>
-    <mat-step>
+    <mat-step label="Import file">
         <div class="container" appDnd (fileDropped)="onFileDropped($event)">
             <input type="file" #fileDropRef id="fileDropRef" multiple
                 (change)="fileBrowseHandler($event.target.files)" />
@@ -23,18 +23,26 @@
                     </p>
                     <app-progress [progress]="file?.progress"></app-progress>
                 </div>
-                <div class="example-button-container">
-                    <button mat-fab color="error" class="delete" width="15px" alt="file" (click)="deleteFile(i)"
-                        aria-label="Example icon button with a delete icon">
-                        <mat-icon>delete</mat-icon>
-                    </button>
-                </div>
+                <section>
+                    <div class="example-flex-container">
+                        <button mat-flat-button  class="submitFile" type="submit">
+                            Upload this file
+                        </button>
+                        <button mat-fab color="error" class="delete" width="15px" alt="file" (click)="deleteFile(i)"
+                            aria-label="Example icon button with a delete icon">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </div>
+                </section>
             </div>
         </div>
     </mat-step>
     <mat-step label="Field mapping">
         <form>
             <div>
+                <div >
+
+                </div>
                 <button mat-button matStepperPrevious>Back</button>
                 <button mat-button matStepperNext>Next</button>
             </div>
