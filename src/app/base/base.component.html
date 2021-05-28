@@ -4,7 +4,7 @@
 <mat-horizontal-stepper [linear]="isLinear" #stepper>
     <mat-step label="Import file">
         <div class="container" appDnd (fileDropped)="onFileDropped($event)">
-            <input type="file" #fileDropRef id="fileDropRef" multiple
+            <input formControlName="file" type="file" #fileDropRef id="fileDropRef" [multiple]="false"
                 (change)="fileBrowseHandler($event.target.files)" />
             <i for="fileDropRef" class="fas fa-cloud-upload-alt"></i>
             <h3 class="dragAndDrop">Drag and drop file here</h3>
@@ -25,7 +25,7 @@
                 </div>
                 <section>
                     <div class="example-flex-container">
-                        <button mat-flat-button  class="submitFile" type="submit">
+                        <button mat-flat-button class="submitFile" type="button" (click)="uploadFileAndMatching(i)">
                             Upload this file
                         </button>
                         <button mat-fab color="error" class="delete" width="15px" alt="file" (click)="deleteFile(i)"
@@ -40,7 +40,7 @@
     <mat-step label="Field mapping">
         <form>
             <div>
-                <div >
+                <div>
 
                 </div>
                 <button mat-button matStepperPrevious>Back</button>

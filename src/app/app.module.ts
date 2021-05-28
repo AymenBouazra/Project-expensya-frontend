@@ -12,14 +12,19 @@ import { MatButtonModule } from '@angular/material/button';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BaseComponent } from './base/base.component';
 import { MatStepperModule } from '@angular/material/stepper';
-import {MatFormFieldModule} from '@angular/material/form-field';
-
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { HttpClientModule } from '@angular/common/http';
+import { ProgressComponent } from './progress/progress.component';
+import { DndDirective } from './dnd.directive';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     Page404Component,
     BaseComponent,
+    ProgressComponent,
+    DndDirective,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +35,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatIconModule,
     MatButtonModule,
     MatStepperModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatSnackBarModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
