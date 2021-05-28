@@ -24,18 +24,20 @@
 
 
 @media only screen and (max-width: 1120px) {
-  .container{
+  .container {
     display: flex;
     justify-content: space-around;
     height: auto;
   }
-  h3.dragAndDrop{
+
+  h3.dragAndDrop {
     text-align: justify;
     white-space: nowrap;
     font-size: 4vw;
     padding-bottom: 10px;
   }
-  h3.browseFile{
+
+  h3.browseFile {
     width: 190px;
     white-space: nowrap;
     height: 50px;
@@ -44,28 +46,31 @@
   }
 }
 
-@media only screen and (max-width: 400px){
-  
-  p.size{
+@media only screen and (max-width: 400px) {
+  p.size {
     font-size: 5vw;
   }
-  h4.name{
+
+  h4.name {
     font-size: 5vw;
   }
 }
+
 @media only screen and (max-width: 765px) {
-  .container{
+  .container {
     display: flex;
     justify-content: space-around;
     height: auto;
   }
-  h3.dragAndDrop{
+
+  h3.dragAndDrop {
     text-align: justify;
     white-space: nowrap;
     font-size: 4vw;
     padding-bottom: 10px;
   }
-  h3.browseFile{
+
+  h3.browseFile {
     white-space: nowrap;
     width: 150px;
     height: 50px;
@@ -73,12 +78,16 @@
     padding: 20px 8px 0px 8px;
     margin: 15px auto 15px auto;
   }
-  .single-file{
+
+  .single-file {
     flex-direction: column;
   }
-  button.submitFile{
-    
-    font-size:17px;
+
+  button.submitFile {
+    font-size: 17px;
+  }
+  div.info{
+    width:220px
   }
 }
 
@@ -110,12 +119,12 @@ input {
   flex-direction: row;
 }
 
-.submitFile{
-margin-right: 20px;
-font-size: 25px;
-border-radius: 25px;
-background-color: #01c86b;
-color: rgb(217, 255, 231);
+.submitFile {
+  margin-right: 20px;
+  font-size: 25px;
+  border-radius: 25px;
+  background-color: #01c86b;
+  color: rgb(217, 255, 231);
 }
 
 section {
@@ -136,14 +145,13 @@ section {
 
 .dragAndDrop {
   font-size: 40px;
-  margin: 10px auto 10px auto; 
+  margin: 10px auto 10px auto;
   font-weight: 600;
   color: #38424c;
 }
 
 .files-list {
-  margin : 0 10% 0 10%;
-
+  margin: 0 10% 0 10%;
 }
 
 .single-file {
@@ -167,7 +175,7 @@ img.delete {
   font-size: 20px;
   font-weight: 500;
   color: #353f4a;
-  margin: 11px 5px 0 0 ;
+  margin: 11px 5px 0 0;
 }
 
 .size {
@@ -178,9 +186,9 @@ img.delete {
 }
 
 .info {
-  width: 250px;
+  width: 800px;
   height: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: flex-start;
 }
