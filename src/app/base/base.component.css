@@ -7,8 +7,8 @@
 }
 
 .container {
-  width: 50%;
-  height: 42%;
+  width: 700px;
+  height: 500px;
   padding: 2rem;
   text-align: center;
   border: 5px solid #008cff;
@@ -19,6 +19,7 @@
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
+  background-color: #f3f3f3;
 }
 
 .container:hover {
@@ -40,6 +41,22 @@ input {
   top: 0;
   left: 0;
   cursor: pointer;
+}
+
+.example-flex-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.submitFile{
+margin-right: 20px;
+font-size: 25px;
+background-color: #01c86b;
+color: rgb(217, 255, 231);
+}
+
+section {
+  display: table;
 }
 
 label {
@@ -79,9 +96,6 @@ img.delete {
   margin-left: 0.5rem;
   cursor: pointer;
   align-self: flex-end;
-
-
-
   display: flex;
   flex-grow: 1;
 }
