@@ -192,3 +192,30 @@ img.delete {
   flex-direction: row;
   justify-content: flex-start;
 }
+
+.matchingContainer{
+  border: blueviolet solid 3px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: row;
+  border-radius: 15px;
+}
+.notMatched{
+  border: rgb(0, 0, 0) solid 3px;
+  border-radius: 15px;
+  min-height: 700px;
+  width: 50%;
+  margin: 10px;
+}
+.matched{
+  border:rgb(128, 211, 5) solid 3px;
+  border-radius: 15px;
+  min-height: 700px;
+  width: 50%;
+  margin: 10px;
+}
+.headerOfClient{
+  font-size: 25px;
+  font-weight: 500;
+  margin:0 20px 0 20px ;
+}

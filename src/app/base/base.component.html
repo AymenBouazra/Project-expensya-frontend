@@ -25,7 +25,7 @@
                 </div>
                 <section>
                     <div class="example-flex-container">
-                        <button mat-flat-button class="submitFile" type="button" (click)="uploadFileAndMatching(i)">
+                        <button mat-flat-button class="submitFile" type="button" (click)="uploadFileAndMatching(i,stepper)">
                             Upload this file
                         </button>
                         <button mat-fab color="error" class="delete" width="15px" alt="file" (click)="deleteFile(i)"
@@ -40,8 +40,23 @@
     <mat-step label="Field mapping">
         <form>
             <div>
-                <div>
-
+                <div class="matchingContainer row">
+                    <div class="notMatched col-6">
+                        <div >
+                            <span class="headerOfClient"> Expensya </span> 
+                            <mat-form-field appearance="fill">
+                                <mat-label>State</mat-label>
+                                <mat-select>
+                                  <mat-option>None</mat-option>
+                                  <mat-option *ngFor="let list of expensyaList" [value]="state">{{list}}</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            <mat-divider></mat-divider>
+                        </div>
+                    </div>
+                    <div class="matched col-6">
+                        second div
+                    </div>
                 </div>
                 <button mat-button matStepperPrevious>Back</button>
                 <button mat-button matStepperNext>Next</button>

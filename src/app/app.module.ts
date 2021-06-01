@@ -17,6 +17,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { ProgressComponent } from './progress/progress.component';
 import { DndDirective } from './dnd.directive';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDividerModule } from '@angular/material/divider';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +39,9 @@ import { DndDirective } from './dnd.directive';
     MatStepperModule,
     MatFormFieldModule,
     MatSnackBarModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSelectModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
