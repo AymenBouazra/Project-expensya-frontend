@@ -56,17 +56,7 @@
                         <button mat-flat-button class="confirm float-right" > Confirm </button>
                     </div>
                     <div class="matched col-6">
-                        <h1 style="font-size: 30px; font-weight: 500; color: rgb(99, 199, 0);">Matched</h1>
-                        <div *ngFor="let header of listHeader; let i = index">
-                            <span class="headerOfClient col-6"> {{header}} </span> 
-                            <mat-form-field appearance="fill">
-                                <mat-label>Choose Option</mat-label>
-                                <mat-select [value]="selectedOption">
-                                  <mat-option *ngFor="let list of expensyaList[i]" [value]="list"><label style="font-size: 23px; color: rgb(71, 114, 253);">{{list[0]}}</label> <label style="font-size: 23px; color: rgb(118, 3, 212); float : right;">{{list[1]}} % </label></mat-option>
-                                </mat-select>
-                              </mat-form-field>
-                            <mat-divider></mat-divider>
-                        </div>
+                        second div for matched list
                     </div>
                 </div>
                 <button mat-button matStepperPrevious>Back</button>
