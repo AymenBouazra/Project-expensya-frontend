@@ -22,7 +22,6 @@
   background-color: #f3f3f3;
 }
 
-
 @media only screen and (max-width: 1120px) {
   .container {
     display: flex;
@@ -86,11 +85,10 @@
   button.submitFile {
     font-size: 17px;
   }
-  div.info{
-    width:220px
+  div.info {
+    width: 220px;
   }
 }
-
 
 .container:hover {
   border: 5px solid #01c86b;
@@ -193,29 +191,32 @@ img.delete {
   justify-content: flex-start;
 }
 
-.matchingContainer{
+.matchingContainer {
   border: blueviolet solid 3px;
   border-radius: 15px;
   display: flex;
   flex-direction: row;
   border-radius: 15px;
 }
-.notMatched{
+
+.notMatched {
   border: rgb(0, 0, 0) solid 3px;
   border-radius: 15px;
   min-height: 700px;
   width: 50%;
   margin: 10px;
 }
-.matched{
-  border:rgb(128, 211, 5) solid 3px;
+
+.matched {
+  border: rgb(128, 211, 5) solid 3px;
   border-radius: 15px;
   min-height: 700px;
   width: 50%;
   margin: 10px;
 }
-.headerOfClient{
+
+.headerOfClient {
   font-size: 25px;
   font-weight: 500;
-  margin:0 20px 0 20px ;
+  margin: 0 20px 0 20px;
 }
