@@ -209,14 +209,36 @@ img.delete {
 
 .matched {
   border: rgb(128, 211, 5) solid 3px;
-  border-radius: 15px;
+  border-radius: 10px;
   min-height: 700px;
   width: 50%;
   margin: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .headerOfClient {
   font-size: 25px;
   font-weight: 500;
   margin: 0 20px 0 20px;
+}
+
+.confirm {
+  margin-right: margin;
+  font-size: 25px;
+  border-radius: 25px;
+  background-color: #01c86b;
+  color: rgb(217, 255, 231);
+  float: right;
+}
+
+.matchedList{
+  padding: 25px;
+  font-size: 23px;
+  font-weight: 400;
+  color: rgb(54, 134, 1);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
