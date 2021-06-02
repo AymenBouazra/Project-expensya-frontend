@@ -8,33 +8,10 @@ import { MatStepper } from '@angular/material/stepper';
   styleUrls: ['./base.component.css'],
 })
 export class BaseComponent implements OnInit {
+  listHeader: any[]= [];
+  listMatching: any[]= [];
   isLinear = false;
-  expensyaList: string[] = [
-    'LastName',
-    'FirstName',
-    'Language',
-    'PayId',
-    'PayId2',
-    'PayId3',
-    'PayId4',
-    'PayId5',
-    'PayId6',
-    'Mail',
-    'ManagerMail',
-    'ManagerPayId',
-    'IsAdmin',
-    'IsAccountant',
-    'Tags',
-    'LocalCountry',
-    'LocalCurrency',
-    'ReviewerMail',
-    'ReviewerPayId',
-    'DefaultProjectExternalId',
-    'IsActive',
-    'MailAlias',
-    'MileageRate',
-    'IKReference',
-  ];
+  expensyaList: string[] = [];
   constructor(
     private importService: AppService,
     private snackBar: MatSnackBar,
@@ -98,10 +75,16 @@ export class BaseComponent implements OnInit {
   }
 
   uploadFileAndMatching(index: number,stepper:MatStepper) {
-    console.log('thefile ' + this.files[0]);
+    console.log(this.files[0]);
     this.importService.upload(this.files[0]).subscribe(
       (response: any) => {
-        console.log(response);
+        this.listHeader = response[response.length-1];
+        response.splice(response.length-1,1);
+        this.expensyaList = response;
+        // console.log(response);
+        console.log(this.expensyaList);
+        console.log(this.listHeader);
+        
         
         this.snackBar.open(
           'File uploaded',

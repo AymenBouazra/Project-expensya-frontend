@@ -42,13 +42,12 @@
             <div>
                 <div class="matchingContainer row">
                     <div class="notMatched col-6">
-                        <div >
-                            <span class="headerOfClient"> Expensya </span> 
+                        <div *ngFor="let header of listHeader; let i = index">
+                            <span class="headerOfClient"> {{header}} </span> 
                             <mat-form-field appearance="fill">
-                                <mat-label>State</mat-label>
+                                <mat-label>Choose Option</mat-label>
                                 <mat-select>
-                                  <mat-option>None</mat-option>
-                                  <mat-option *ngFor="let list of expensyaList" [value]="state">{{list}}</mat-option>
+                                  <mat-option *ngFor="let list of expensyaList[i]" [value]="list">{{list[0]}} {{list[1]}}%</mat-option>
                                 </mat-select>
                               </mat-form-field>
                             <mat-divider></mat-divider>
