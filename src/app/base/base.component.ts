@@ -8,9 +8,10 @@ import { MatStepper } from '@angular/material/stepper';
   styleUrls: ['./base.component.css'],
 })
 export class BaseComponent implements OnInit {
-  listHeader: any[]= [];
-  listMatching: any[]= [];
   isLinear = false;
+  listHeader: any[]= [];
+  listKeyMatched: any[]= [];
+  listScoreMatched: any[]= [];
   expensyaList: string[] = [];
   constructor(
     private importService: AppService,
@@ -78,12 +79,19 @@ export class BaseComponent implements OnInit {
     console.log(this.files[0]);
     this.importService.upload(this.files[0]).subscribe(
       (response: any) => {
-        this.listHeader = response[response.length-1];
-        response.splice(response.length-1,1);
+        this.listHeader = response[response.length-3];
+        this.listKeyMatched = response[response.length-2];
+        this.listScoreMatched = response[response.length-1]
+
+        response.splice(response.length-3,3);
         this.expensyaList = response;
         // console.log(response);
         console.log(this.expensyaList);
         console.log(this.listHeader);
+        console.log(this.listKeyMatched);
+        console.log(this.listScoreMatched);
+        
+        
         
         
         this.snackBar.open(
