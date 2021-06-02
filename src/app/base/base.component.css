@@ -209,7 +209,7 @@ img.delete {
 
 .matched {
   border: rgb(128, 211, 5) solid 3px;
-  border-radius: 15px;
+  border-radius: 10px;
   min-height: 700px;
   width: 50%;
   margin: 10px;
@@ -219,4 +219,13 @@ img.delete {
   font-size: 25px;
   font-weight: 500;
   margin: 0 20px 0 20px;
+}
+
+.confirm {
+  margin-right: 20px;
+  font-size: 25px;
+  border-radius: 25px;
+  background-color: #01c86b;
+  color: rgb(217, 255, 231);
+  float: right;
 }
