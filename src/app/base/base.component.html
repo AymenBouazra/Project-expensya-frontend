@@ -55,16 +55,13 @@
                         </div>
                         <button mat-flat-button class="confirm float-right" > Confirm </button>
                     </div>
-                    <div class="matched col-6">
+                    <div class="matched">
                         <div class="row">
-
-                            <div class="matchedList col-12" *ngFor=" let listClient of listKeyMatched ; let i = index">
+                            <div class="matchedList" *ngFor=" let listClient of listKeyMatched ; let i = index">
                                 <label for="">{{listClient}} </label> <label for="">{{listScoreMatched[i][0]}}</label> 
                             </div>
                         </div>
-                        <!-- <div class="matchedList col-6" *ngFor="let matched of listScoreMatched;">
-                            {{matched[0]}}
-                         </div> -->
+                        
                     </div>
                 </div>
                 <button mat-button matStepperPrevious>Back</button>
