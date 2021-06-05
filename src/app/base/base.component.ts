@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AppService } from '../services/app.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatStepper } from '@angular/material/stepper';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-base',
   templateUrl: './base.component.html',
@@ -12,13 +13,29 @@ export class BaseComponent implements OnInit {
   listHeader: any[]= [];
   listKeyMatched: any[]= [];
   listScoreMatched: any[]= [];
+  fileName: any
   expensyaList: string[] = [];
+  matched = new FormArray([])
+
   constructor(
     private importService: AppService,
     private snackBar: MatSnackBar,
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // this.importService.upload(this.files[0]).subscribe(
+    //   (response: any) => {
+    //     this.listHeader = response[response.length-4];
+    //     this.listKeyMatched = response[response.length-3];
+    //     this.listScoreMatched = response[response.length-2]
+    //     this.fileName = response[response.length-1]
+    //     response.splice(response.length-4,4);
+    //     this.expensyaList = response;
+    //   }
+    // )
+    console.log(this.expensyaList);
+    
+  }
   @ViewChild('fileDropRef', { static: false }) fileDropEl: ElementRef;
   files: any[] = [];
 
@@ -79,17 +96,19 @@ export class BaseComponent implements OnInit {
     console.log(this.files[0]);
     this.importService.upload(this.files[0]).subscribe(
       (response: any) => {
-        this.listHeader = response[response.length-3];
-        this.listKeyMatched = response[response.length-2];
-        this.listScoreMatched = response[response.length-1]
-
-        response.splice(response.length-3,3);
+        this.listHeader = response[response.length-4];
+        this.listKeyMatched = response[response.length-3];
+        this.listScoreMatched = response[response.length-2]
+        this.fileName = response[response.length-1]
+        response.splice(response.length-4,4);
         this.expensyaList = response;
         // console.log(response);
         console.log(this.expensyaList);
         console.log(this.listHeader);
         console.log(this.listKeyMatched);
         console.log(this.listScoreMatched);
+        console.log(this.fileName);
+        
         
         
         
@@ -105,5 +124,10 @@ export class BaseComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  ekhdem(){
+    console.log(this.matched.value);
+    
   }
 }
