@@ -41,19 +41,19 @@
         <form>
             <div>
                 <div class="matchingContainer row">
-                    <div class="notMatched col-6">
+                    <div class="notMatched col-6" formArrayName="matched">
                         <h1 style="font-size: 30px; font-weight: 500; color: rgb(71, 114, 253);">Not matched yet: </h1>
                         <div *ngFor="let header of listHeader; let i = index">
-                            <span class="headerOfClient col-6"> {{header}} </span> 
-                            <mat-form-field appearance="fill">
-                                <mat-label>Choose Option</mat-label>
-                                <mat-select [value]="selectedOption">
-                                  <mat-option *ngFor="let list of expensyaList[i]" [value]="list"><label style="font-size: 23px; color: rgb(71, 114, 253);">{{list[0]}}</label> <label style="font-size: 23px; color: rgb(118, 3, 212); float : right;">{{list[1]}} % </label></mat-option>
-                                </mat-select>
-                              </mat-form-field>
-                            <mat-divider></mat-divider>
+                                <span class="headerOfClient form-control col-6" formControlName="headerClient">{{header}}</span> 
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Choose Option</mat-label>
+                                    <mat-select [value]="selectedOption">
+                                        <mat-option class="form-contorl" *ngFor="let list of expensyaList[i]" [value]="list[0]" formConrolName="matching"><label style="font-size: 23px; color: rgb(71, 114, 253);">{{list[0]}}</label> <label style="font-size: 23px; color: rgb(118, 3, 212); float : right;">{{list[1]}} % </label></mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-divider></mat-divider>
                         </div>
-                        <button mat-flat-button class="confirm float-right" > Confirm </button>
+                        <button mat-flat-button class="confirm" type="button" (click)="ekhdem()"> Confirm </button>
                     </div>
                     <div class="matched">
                         <div class="row">
