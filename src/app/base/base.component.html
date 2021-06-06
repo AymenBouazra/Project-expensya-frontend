@@ -25,7 +25,8 @@
                 </div>
                 <section>
                     <div class="example-flex-container">
-                        <button mat-flat-button class="submitFile" type="button" (click)="uploadFileAndMatching(i,stepper)">
+                        <button mat-flat-button class="submitFile" type="button"
+                            (click)="uploadFileAndMatching(i,stepper)">
                             Upload this file
                         </button>
                         <button mat-fab color="error" class="delete" width="15px" alt="file" (click)="deleteFile(i)"
@@ -41,27 +42,39 @@
         <form>
             <div>
                 <div class="matchingContainer row">
-                    <div class="notMatched col-6" formArrayName="matched">
+                    <div class="notMatched col-6">
                         <h1 style="font-size: 30px; font-weight: 500; color: rgb(71, 114, 253);">Not matched yet: </h1>
-                        <div *ngFor="let header of listHeader; let i = index">
-                                <span class="headerOfClient form-control col-6" formControlName="headerClient">{{header}}</span> 
-                                <mat-form-field appearance="fill">
-                                    <mat-label>Choose Option</mat-label>
-                                    <mat-select [value]="selectedOption">
-                                        <mat-option class="form-contorl" *ngFor="let list of expensyaList[i]" [value]="list[0]" formConrolName="matching"><label style="font-size: 23px; color: rgb(71, 114, 253);">{{list[0]}}</label> <label style="font-size: 23px; color: rgb(118, 3, 212); float : right;">{{list[1]}} % </label></mat-option>
-                                    </mat-select>
-                                </mat-form-field>
-                                <mat-divider></mat-divider>
+                        <div formArrayName="notMatched">
+                            <div *ngFor="let header of notMatched.value; let i=index" [formGroup]="header">
+                                <div  class="row">
+                                    <span class="headerOfClient" formControlName="key">{{header.key}}</span>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Choose Option</mat-label>
+                                        <mat-select  [name]="i" (change)="changevalues($event)">
+                                            <mat-option formControlName="affectedKey" *ngFor="let list of headersNotMatched[i].similarityOfKey" [value]="list[0]">
+                                                <label
+                                                style="font-size: 23px; color: rgb(71, 114, 253);">{{list[0]}}</label>
+                                                <label aria-disabled="true"
+                                                style="font-size: 23px; color: rgb(118, 3, 212); float : right;">{{list[1]}}
+                                                % </label>
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                    
+                                    <mat-divider></mat-divider>
+                                </div>
+                            </div>
+                            <button mat-flat-button class="confirm" type="button" (click)="ekhdem()"> Confirm </button>
+                            <!-- {{notMatched.value | json}} -->
                         </div>
-                        <button mat-flat-button class="confirm" type="button" (click)="ekhdem()"> Confirm </button>
                     </div>
                     <div class="matched">
                         <div class="row">
-                            <div class="matchedList" *ngFor=" let listClient of listKeyMatched ; let i = index">
-                                <label for="">{{listClient}} </label> <label for="">{{listScoreMatched[i][0]}}</label> 
+                            <div class="matchedList" *ngFor=" let listClient of headerMatched ; let i = index">
+                                <label for="">{{listClient.key}} </label> <label for=""></label>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
                 <button mat-button matStepperPrevious>Back</button>

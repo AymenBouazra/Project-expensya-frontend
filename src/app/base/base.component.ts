@@ -3,39 +3,27 @@ import { AppService } from '../services/app.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatStepper } from '@angular/material/stepper';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { __values } from 'tslib';
 @Component({
   selector: 'app-base',
   templateUrl: './base.component.html',
   styleUrls: ['./base.component.css'],
 })
 export class BaseComponent implements OnInit {
+  // selected = 'aaaaa';
   isLinear = false;
-  listHeader: any[]= [];
-  listKeyMatched: any[]= [];
-  listScoreMatched: any[]= [];
   fileName: any
   expensyaList: string[] = [];
-  matched = new FormArray([])
+  notMatched = new FormArray([])
+  headersNotMatched: any ;
+  headerMatched: any ;
 
   constructor(
     private importService: AppService,
     private snackBar: MatSnackBar,
   ) {}
 
-  ngOnInit(): void {
-    // this.importService.upload(this.files[0]).subscribe(
-    //   (response: any) => {
-    //     this.listHeader = response[response.length-4];
-    //     this.listKeyMatched = response[response.length-3];
-    //     this.listScoreMatched = response[response.length-2]
-    //     this.fileName = response[response.length-1]
-    //     response.splice(response.length-4,4);
-    //     this.expensyaList = response;
-    //   }
-    // )
-    console.log(this.expensyaList);
-    
-  }
+  ngOnInit(): void {}
   @ViewChild('fileDropRef', { static: false }) fileDropEl: ElementRef;
   files: any[] = [];
 
@@ -93,24 +81,19 @@ export class BaseComponent implements OnInit {
   }
 
   uploadFileAndMatching(index: number,stepper:MatStepper) {
-    console.log(this.files[0]);
+    // console.log(this.files[0]);
     this.importService.upload(this.files[0]).subscribe(
       (response: any) => {
-        this.listHeader = response[response.length-4];
-        this.listKeyMatched = response[response.length-3];
-        this.listScoreMatched = response[response.length-2]
-        this.fileName = response[response.length-1]
-        response.splice(response.length-4,4);
-        this.expensyaList = response;
-        // console.log(response);
-        console.log(this.expensyaList);
-        console.log(this.listHeader);
-        console.log(this.listKeyMatched);
-        console.log(this.listScoreMatched);
-        console.log(this.fileName);
-        
-        
-        
+        this.headerMatched = response.headersMatched
+        this.headersNotMatched = response.headersNotMatched;
+        response.headersNotMatched.forEach(header => {
+          this.notMatched.push(new FormGroup({
+            key: new FormControl(header.key),
+            affectedKey: new FormControl(''),
+          }));
+        });
+        console.log(this.headerMatched);
+        console.log(this.headersNotMatched);
         
         
         this.snackBar.open(
@@ -125,9 +108,11 @@ export class BaseComponent implements OnInit {
       }
     );
   }
-
-  ekhdem(){
-    console.log(this.matched.value);
+  changevalues(e){
+    console.log(e.value);
     
+  }
+  ekhdem(){
+    console.log(this.notMatched.value);
   }
 }
