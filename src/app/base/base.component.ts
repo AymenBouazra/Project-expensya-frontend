@@ -12,12 +12,13 @@ import { __values } from 'tslib';
 export class BaseComponent implements OnInit {
   // selected = 'aaaaa';
   isLinear = false;
+  x= []
   fileName: any
   expensyaList: string[] = [];
   notMatched = new FormArray([])
   headersNotMatched: any ;
   headerMatched: any ;
-
+  selectedKey = ''
   constructor(
     private importService: AppService,
     private snackBar: MatSnackBar,
@@ -86,15 +87,15 @@ export class BaseComponent implements OnInit {
       (response: any) => {
         this.headerMatched = response.headersMatched
         this.headersNotMatched = response.headersNotMatched;
+        console.log(this.headerMatched);
+        console.log(this.headersNotMatched);
         response.headersNotMatched.forEach(header => {
+          console.log((header));
           this.notMatched.push(new FormGroup({
             key: new FormControl(header.key),
             affectedKey: new FormControl(''),
           }));
         });
-        console.log(this.headerMatched);
-        console.log(this.headersNotMatched);
-        
         
         this.snackBar.open(
           'File uploaded',
@@ -105,14 +106,24 @@ export class BaseComponent implements OnInit {
       },
       (error) => {
         console.log(error);
-      }
+      }      
     );
   }
-  changevalues(e){
-    console.log(e.value);
-    
+
+  changevalues(e,i){
+    this.selectedKey = e
+    console.log(this.selectedKey);
+    this.x[i]=this.selectedKey
+    console.log(this.x);
   }
-  ekhdem(){
+
+  confirm(){
+    this.x.forEach((key) => {
+      this.headerMatched.push({key: key , score:100})
+    });
+    
     console.log(this.notMatched.value);
+    console.log(this.headerMatched);
+    
   }
 }

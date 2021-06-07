@@ -50,22 +50,21 @@
                                     <span class="headerOfClient" formControlName="key">{{header.key}}</span>
                                     <mat-form-field appearance="fill">
                                         <mat-label>Choose Option</mat-label>
-                                        <mat-select  [name]="i" (change)="changevalues($event)">
-                                            <mat-option formControlName="affectedKey" *ngFor="let list of headersNotMatched[i].similarityOfKey" [value]="list[0]">
+                                        <mat-select  [name]="i" >
+                                            <mat-option formControlName="affectedKey" (click)="changevalues(list[0],i)" *ngFor="let list of headersNotMatched[i].similarityOfKey" [value]="list[0]">
                                                 <label
-                                                style="font-size: 23px; color: rgb(71, 114, 253);">{{list[0]}}</label>
+                                                style="font-size: 23px; color: rgb(71, 114, 253);">{{list[0]}} </label>
                                                 <label aria-disabled="true"
-                                                style="font-size: 23px; color: rgb(118, 3, 212); float : right;">{{list[1]}}
+                                                style="font-size: 23px; color: rgb(118, 3, 212); float : right;">| {{list[1]}}
                                                 % </label>
                                             </mat-option>
                                         </mat-select>
                                     </mat-form-field>
-                                    
                                     <mat-divider></mat-divider>
                                 </div>
                             </div>
-                            <button mat-flat-button class="confirm" type="button" (click)="ekhdem()"> Confirm </button>
-                            <!-- {{notMatched.value | json}} -->
+                            <button mat-flat-button class="confirm" type="button" (click)="confirm()"> Confirm </button>
+                            {{notMatched.value | json}}
                         </div>
                     </div>
                     <div class="matched">
@@ -73,8 +72,9 @@
                             <div class="matchedList" *ngFor=" let listClient of headerMatched ; let i = index">
                                 <label for="">{{listClient.key}} </label> <label for=""></label>
                             </div>
+                            {{headerMatched | json}}
                         </div>
-
+                        
                     </div>
                 </div>
                 <button mat-button matStepperPrevious>Back</button>
