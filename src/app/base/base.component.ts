@@ -12,16 +12,20 @@ import { __values } from 'tslib';
 export class BaseComponent implements OnInit {
   // selected = 'aaaaa';
   isLinear = false;
-  x= []
-  fileName: any
+  options = [];
+  hideConfirm = false;
+  fileName: any;
+  startImport = false;
+  nothingToMatch = false;
   expensyaList: string[] = [];
-  notMatched = new FormArray([])
-  headersNotMatched: any ;
-  headerMatched: any ;
-  selectedKey = ''
+  notMatched = new FormArray([]);
+  headersNotMatched: any;
+  headerMatched: any;
+  selectedKey = '';
+
   constructor(
     private importService: AppService,
-    private snackBar: MatSnackBar,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {}
@@ -81,49 +85,57 @@ export class BaseComponent implements OnInit {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
   }
 
-  uploadFileAndMatching(index: number,stepper:MatStepper) {
+  uploadFileAndMatching(index: number, stepper: MatStepper) {
     // console.log(this.files[0]);
     this.importService.upload(this.files[0]).subscribe(
       (response: any) => {
-        this.headerMatched = response.headersMatched
+        this.fileName = response.filename
+        this.headerMatched = response.headersMatched;
         this.headersNotMatched = response.headersNotMatched;
+        console.log(this.files[0]);        
         console.log(this.headerMatched);
         console.log(this.headersNotMatched);
-        response.headersNotMatched.forEach(header => {
-          console.log((header));
-          this.notMatched.push(new FormGroup({
-            key: new FormControl(header.key),
-            affectedKey: new FormControl(''),
-          }));
+        response.headersNotMatched.forEach((header) => {
+          console.log(header);
+          this.notMatched.push(
+            new FormGroup({
+              key: new FormControl(header.key),
+              affectedKey: new FormControl(''),
+            })
+          );
         });
-        
-        this.snackBar.open(
-          'File uploaded',
-          'Close',
-          { duration: 3000 }
-        );
+
+        this.snackBar.open('File uploaded', 'Close', { duration: 3000 });
         stepper.next();
       },
       (error) => {
         console.log(error);
-      }      
+      }
     );
   }
 
-  changevalues(e,i){
-    this.selectedKey = e
-    console.log(this.selectedKey);
-    this.x[i]=this.selectedKey
-    console.log(this.x);
+  changevalues(e, i) {
+    this.selectedKey = e;
+    this.options[i] = this.selectedKey;
+    console.log(this.options);
   }
 
-  confirm(){
-    this.x.forEach((key) => {
-      this.headerMatched.push({key: key , score:100})
+  confirm() {
+    this.options.forEach((key,i) => {
+      this.headerMatched.push({ key: this.headersNotMatched[i].key,  matchedKey: key  });
     });
-    
-    console.log(this.notMatched.value);
+    while (this.notMatched.length !== 0) {
+      this.notMatched.removeAt(0);
+    }
+    this.hideConfirm = true;
+    this.startImport = true;
+    this.nothingToMatch = true ;
     console.log(this.headerMatched);
-    
+  }
+
+  startImporting(){
+    this.importService.import(this.headerMatched,this.fileName).subscribe((res)=>{
+      console.log(res);
+    })
   }
 }
