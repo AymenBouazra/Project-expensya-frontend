@@ -19,6 +19,7 @@ import { ProgressComponent } from './progress/progress.component';
 import { DndDirective } from './dnd.directive';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDividerModule } from '@angular/material/divider';
+import { SpinnerComponent } from './spinner/spinner.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +28,7 @@ import { MatDividerModule } from '@angular/material/divider';
     BaseComponent,
     ProgressComponent,
     DndDirective,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,

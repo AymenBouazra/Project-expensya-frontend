@@ -225,7 +225,7 @@ img.delete {
 }
 
 .confirm {
-  margin-right: margin;
+  margin-right: 60px;
   font-size: 25px;
   border-radius: 25px;
   background-color: #01c86b;
@@ -242,4 +242,13 @@ img.delete {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.startImport{
+  margin-right: margin;
+  font-size: 25px;
+  border-radius: 25px;
+  background-color: #0178c8;
+  color: rgb(217, 255, 231);
+  float: right;
 }
