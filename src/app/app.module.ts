@@ -20,6 +20,7 @@ import { DndDirective } from './dnd.directive';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDividerModule } from '@angular/material/divider';
 import { SpinnerComponent } from './spinner/spinner.component';
+// import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +44,9 @@ import { SpinnerComponent } from './spinner/spinner.component';
     MatSnackBarModule,
     HttpClientModule,
     MatSelectModule,
-    MatDividerModule
+    MatDividerModule,
+    // ReactiveFormsModule,
+    // FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
