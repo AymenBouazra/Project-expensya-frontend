@@ -214,8 +214,7 @@ img.delete {
   width: 50%;
   margin: 10px;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  flex-direction: column;
 }
 
 .headerOfClient {
@@ -234,7 +233,6 @@ img.delete {
 }
 
 .matchedList{
-  width: 100%;
   padding: 25px;
   font-size: 23px;
   font-weight: 400;
@@ -245,9 +243,10 @@ img.delete {
 }
 
 .startImport{
-  margin-right: margin;
+  margin: 30px;
   font-size: 25px;
-  border-radius: 25px;
+  width: 200px;
+  height: 50px;
   background-color: #0178c8;
   color: rgb(217, 255, 231);
   float: right;

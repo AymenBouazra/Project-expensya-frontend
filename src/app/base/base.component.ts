@@ -11,6 +11,8 @@ import { __values } from 'tslib';
 })
 export class BaseComponent implements OnInit {
   // selected = 'aaaaa';
+  
+  submitted= false
   isLinear = false;
   options = [];
   hideConfirm = false;
@@ -85,8 +87,8 @@ export class BaseComponent implements OnInit {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
   }
 
+
   uploadFileAndMatching(index: number, stepper: MatStepper) {
-    // console.log(this.files[0]);
     this.importService.upload(this.files[0]).subscribe(
       (response: any) => {
         this.fileName = response.filename
@@ -100,11 +102,10 @@ export class BaseComponent implements OnInit {
           this.notMatched.push(
             new FormGroup({
               key: new FormControl(header.key),
-              affectedKey: new FormControl(''),
+              affectedKey: new FormControl('', Validators.required),
             })
           );
         });
-
         this.snackBar.open('File uploaded', 'Close', { duration: 3000 });
         stepper.next();
       },
@@ -121,21 +122,25 @@ export class BaseComponent implements OnInit {
   }
 
   confirm() {
-    this.options.forEach((key,i) => {
-      this.headerMatched.push({ key: this.headersNotMatched[i].key,  matchedKey: key  });
-    });
-    while (this.notMatched.length !== 0) {
-      this.notMatched.removeAt(0);
-    }
-    this.hideConfirm = true;
-    this.startImport = true;
-    this.nothingToMatch = true ;
-    console.log(this.headerMatched);
+    
+    
+      this.options.forEach((key,i) => {
+        this.headerMatched.push({ key: this.headersNotMatched[i].key,  matchedKey: key  });
+      });
+      while (this.notMatched.length !== 0) {
+        this.notMatched.removeAt(0);
+      }
+      this.hideConfirm = true;
+      this.startImport = true;
+      this.nothingToMatch = true ;
+    
+    
   }
 
   startImporting(){
     this.importService.import(this.headerMatched,this.fileName).subscribe((res)=>{
       console.log(res);
+      
     })
   }
 }
