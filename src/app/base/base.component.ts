@@ -26,7 +26,7 @@ export class BaseComponent implements OnInit {
   selectedKey = '';
 
   constructor(
-    private importService: AppService,
+    private appService: AppService,
     private snackBar: MatSnackBar
   ) {}
 
@@ -89,7 +89,7 @@ export class BaseComponent implements OnInit {
 
 
   uploadFileAndMatching(index: number, stepper: MatStepper) {
-    this.importService.upload(this.files[0]).subscribe(
+    this.appService.upload(this.files[0]).subscribe(
       (response: any) => {
         this.fileName = response.filename
         this.headerMatched = response.headersMatched;
@@ -122,8 +122,6 @@ export class BaseComponent implements OnInit {
   }
 
   confirm() {
-    
-    
       this.options.forEach((key,i) => {
         this.headerMatched.push({ key: this.headersNotMatched[i].key,  matchedKey: key  });
       });
@@ -133,14 +131,16 @@ export class BaseComponent implements OnInit {
       this.hideConfirm = true;
       this.startImport = true;
       this.nothingToMatch = true ;
-    
+      console.log(this.headerMatched);
+      this.appService.confirmHeaders(this.headerMatched).subscribe((res)=>{
+        console.log(res);
+      })
     
   }
 
   startImporting(){
-    this.importService.import(this.headerMatched,this.fileName).subscribe((res)=>{
+    this.appService.import(this.headerMatched,this.fileName).subscribe((res)=>{
       console.log(res);
-      
     })
   }
 }
