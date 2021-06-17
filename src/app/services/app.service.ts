@@ -16,10 +16,6 @@ export class AppService {
     return this.http.post(`${this.baseUrl}/uploadFile`, formData);
   }
 
-  confirmHeaders(headers:any){
-    return this.http.post(`${this.baseUrl}/confirmHeaders`, headers);
-  }
-
   import(header: any, filename: any) {
     return this.http.post(`${this.baseUrl}/startImport/${filename}`, header);
   }
