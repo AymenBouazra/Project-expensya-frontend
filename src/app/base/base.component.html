@@ -39,7 +39,7 @@
         </div>
     </mat-step>
     <mat-step label="Field mapping">
-        <form>
+        <form formGroupName="matching" (ngSubmit)="confirm()">
             <div>
                 <div class="matchingContainer row">
                     <div class="notMatched col-6">
@@ -48,9 +48,9 @@
                         <h1 style="display: flex; justify-content: center; align-items: center; height: 100%; color: blue;"
                             *ngIf="nothingToMatch">Headers selected and there is nothing to match.</h1>
                         <div formArrayName="notMatched" >
-                            <div *ngFor="let header of notMatched.value; let i=index" >
+                            <div *ngFor="let header of getNotMatched.controls; let i=index" >
                                 <div formGroupName="i">
-                                    <span class="headerOfClient" formControlName="key">{{header.key}}</span>
+                                    <span class="headerOfClient" formControlName="key">{{getNotMatched.controls[i].get('key').value}}</span>
                                     <mat-form-field appearance="fill" >
                                         <mat-label>Choose Option</mat-label>
                                         <mat-select formControlName="affectedKey">
@@ -66,34 +66,34 @@
                                             </mat-option>
                                         </mat-select>
                                         <mat-error
-                                            *ngIf="submitted && matched.controls[i].get('affectedKey').hasError('required')">
+                                            *ngIf="submitted && getNotMatched.controls[i].get('affectedKey')?.errors?.required">
                                             Option required</mat-error>
                                     </mat-form-field>
                                     <mat-divider></mat-divider>
                                 </div>
                             </div>
-                            <button mat-flat-button class="confirm" type="button" (click)="confirm()"  *ngIf="!hideConfirm"> Confirm
+                            <button mat-flat-button class="confirm" type="button" (click)="confirm()" *ngIf="!hideConfirm"> Confirm
                             </button>
                         </div>
                     </div>
-                    <div class="matched">
+                    <div class="matched" formArrayName="matched">
                         <div class="">
                             <table class="matchedList" style="border-radius: 5px; margin: 20px 0 0 0"
-                                *ngFor=" let listClient of headerMatched ; let i = index">
+                                *ngFor=" let matched of getMatched.controls ; let i = index">
                                 <tr>
                                     <td style="border: 1px solid black;">
-                                        <label for="">{{listClient.key}} </label>
+                                        <label for="">{{getMatched.controls[i].get('header').value}} </label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="border: 1px solid black;">
-                                        <label for="">{{listClient.matchedKey}} </label>
+                                        <label for="">{{getMatched.controls[i].get('matchingString').value}} </label>
                                     </td>
                                 </tr>
                             </table>
                         </div>
                         <div>
-                            <button mat-flat-button class="startImport" *ngIf="startImport" type="button"
+                            <button mat-flat-button class="startImport" *ngIf="startImport"  type="button"
                                 (click)="startImporting()">
                                 Start import
                             </button>

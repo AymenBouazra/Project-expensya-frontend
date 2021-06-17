@@ -20,7 +20,10 @@ export class BaseComponent implements OnInit {
   startImport = false;
   nothingToMatch = false;
   expensyaList: string[] = [];
-  notMatched = new FormArray([]);
+  matching : FormGroup = new FormGroup({
+    matched : new FormArray([]),
+    notMatched : new FormArray([])
+  })
   headersNotMatched: any;
   headerMatched: any;
   selectedKey = '';
@@ -87,6 +90,13 @@ export class BaseComponent implements OnInit {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
   }
 
+  get getMatched() : FormArray {
+    return this.matching.get('matched') as FormArray
+  }
+
+  get getNotMatched() : FormArray {
+    return this.matching.get('notMatched') as FormArray
+  }
 
   uploadFileAndMatching(index: number, stepper: MatStepper) {
     this.appService.upload(this.files[0]).subscribe(
@@ -97,12 +107,19 @@ export class BaseComponent implements OnInit {
         console.log(this.files[0]);        
         console.log(this.headerMatched);
         console.log(this.headersNotMatched);
-        response.headersNotMatched.forEach((header) => {
-          console.log(header);
-          this.notMatched.push(
+        response.headersNotMatched.forEach((header:any) => {
+          this.getNotMatched.push(
             new FormGroup({
               key: new FormControl(header.key),
-              affectedKey: new FormControl('', Validators.required),
+              affectedKey: new FormControl('', [Validators.required]),
+            })
+          );
+        });
+        response.headersMatched.forEach((header:any) => {
+          this.getMatched.push(
+            new FormGroup({
+              header: new FormControl(header.key),
+              matchingString: new FormControl(header.matchedKey),
             })
           );
         });
@@ -123,23 +140,26 @@ export class BaseComponent implements OnInit {
 
   confirm() {
       this.options.forEach((key,i) => {
-        this.headerMatched.push({ key: this.headersNotMatched[i].key,  matchedKey: key  });
+        console.log(key);
+        
+        this.getMatched.push( new FormGroup({
+          header: new FormControl(this.headersNotMatched[i].key),
+          matchingString: new FormControl(key),
+        }));
       });
-      while (this.notMatched.length !== 0) {
-        this.notMatched.removeAt(0);
+      while (this.getNotMatched.length !== 0) {
+        this.getNotMatched.removeAt(0);
       }
       this.hideConfirm = true;
       this.startImport = true;
       this.nothingToMatch = true ;
-      console.log(this.headerMatched);
-      this.appService.confirmHeaders(this.headerMatched).subscribe((res)=>{
-        console.log(res);
-      })
-    
+      console.log(this.getMatched.value);
   }
 
   startImporting(){
-    this.appService.import(this.headerMatched,this.fileName).subscribe((res)=>{
+    console.log(this.matching.value);
+    
+    this.appService.import(this.getMatched.value,this.fileName).subscribe((res)=>{
       console.log(res);
     })
   }
