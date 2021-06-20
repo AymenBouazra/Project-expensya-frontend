@@ -1,6 +1,6 @@
-<button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+<!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
     {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
-</button>
+</button> -->
 <mat-horizontal-stepper [linear]="isLinear" #stepper>
     <mat-step label="Import file">
         <div class="container" appDnd (fileDropped)="onFileDropped($event)">
@@ -9,7 +9,7 @@
             <i for="fileDropRef" class="fas fa-cloud-upload-alt"></i>
             <h3 class="dragAndDrop">Drag and drop file here</h3>
             <h3 class="dragAndDrop">or</h3>
-            <h3 for="fileDropRef" class="browseFile">Browse for file</h3>
+            <span for="fileDropRef" class="browseFile">Browse for file</span>
         </div>
         <div class="files-list">
             <div class="single-file" *ngFor="let file of files; let i = index">
@@ -29,7 +29,7 @@
                             (click)="uploadFileAndMatching(i,stepper)">
                             Upload this file
                         </button>
-                        <button mat-fab color="error" class="delete" width="15px" alt="file" (click)="deleteFile(i)"
+                        <button mat-flat-button color="error" class="delete" alt="file" (click)="deleteFile(i)"
                             aria-label="Example icon button with a delete icon">
                             <mat-icon>delete</mat-icon>
                         </button>
@@ -41,90 +41,117 @@
     <mat-step label="Field mapping">
         <form formGroupName="matching" (ngSubmit)="confirm()">
             <div>
-                <div class="matchingContainer row">
-                    <div class="notMatched col-6">
-                        <h1 style="font-size: 30px; font-weight: 500; color: rgb(71, 114, 253);"
-                            *ngIf="!nothingToMatch">Not matched yet: </h1>
+                <div class="matchingContainer">
+                    <div class="notMatched">
+                        <div>
+                            <span 
+                                style="font-size: 30px; font-weight: 500; color: rgb(71, 114, 253);"
+                                *ngIf="!nothingToMatch">
+                                Matching table
+                            </span>
+                        </div>
                         <h1 style="display: flex; justify-content: center; align-items: center; height: 100%; color: blue;"
                             *ngIf="nothingToMatch">Headers selected and there is nothing to match.</h1>
-                        <div formArrayName="notMatched" >
-                            <div *ngFor="let header of getNotMatched.controls; let i=index" >
-                                <div formGroupName="i">
-                                    <span class="headerOfClient" formControlName="key">{{getNotMatched.controls[i].get('key').value}}</span>
-                                    <mat-form-field appearance="fill" >
-                                        <mat-label>Choose Option</mat-label>
-                                        <mat-select formControlName="affectedKey">
-                                            <mat-option (click)="changevalues(list[0],i)"
-                                                *ngFor="let list of headersNotMatched[i].similarityOfKey"
-                                                [value]="list[0]">
-                                                <label style="font-size: 23px; color: rgb(71, 114, 253);">{{list[0]}}
-                                                </label>
-                                                <label aria-disabled="true"
-                                                    style="font-size: 23px; color: rgb(118, 3, 212); float : right;">|
-                                                    {{list[1]}}
-                                                    % </label>
-                                            </mat-option>
-                                        </mat-select>
-                                        <mat-error
-                                            *ngIf="submitted && getNotMatched.controls[i].get('affectedKey')?.errors?.required">
-                                            Option required</mat-error>
-                                    </mat-form-field>
+                        <div formArrayName="notMatched">
+                            <div *ngFor="let header of getNotMatched.controls; let i=index">
+                                <div formGroupName="i" class="rowMatch">
+                                    <div class="headerOfClient">
+                                        <span formControlName="key">
+                                            {{getNotMatched.controls[i].get('key').value}}
+                                        </span>
+                                    </div>
+                                    <div class="options">
+                                        <mat-form-field appearance="fill" width="50%">
+                                            <mat-label>Choose Option</mat-label>
+                                            <mat-select formControlName="affectedKey">
+                                                <mat-option (click)="changevalues(list[0],i)"
+                                                    *ngFor="let list of headersNotMatched[i].similarityOfKey"
+                                                    [value]="list[0]">
+                                                    <label
+                                                        style="font-size: 23px; color: rgb(71, 114, 253);">{{list[0]}}
+                                                    </label>
+                                                    <label aria-disabled="true"
+                                                        style="font-size: 23px; color: rgb(118, 3, 212); float : right;">|
+                                                        {{list[1]}}
+                                                        % </label>
+                                                </mat-option>
+                                            </mat-select>
+                                            <mat-error
+                                                *ngIf="submitted && getNotMatched.controls[i].get('affectedKey')?.errors?.required">
+                                                Option required</mat-error>
+                                        </mat-form-field>
+                                    </div>
+
                                     <mat-divider></mat-divider>
                                 </div>
                             </div>
-                            <button mat-flat-button class="confirm" type="button" (click)="confirm()" *ngIf="!hideConfirm"> Confirm
+                            <button mat-flat-button class="confirm" type="button" (click)="confirm()"
+                                *ngIf="!hideConfirm"> Confirm matching <i class="fa iconConfirm fa-chevron-right"
+                                    aria-hidden="true"></i>
                             </button>
                         </div>
                     </div>
                     <div class="matched" formArrayName="matched">
                         <div class="">
-                            <table class="matchedList" style="border-radius: 5px; margin: 20px 0 0 0"
-                                *ngFor=" let matched of getMatched.controls ; let i = index">
-                                <tr>
-                                    <td style="border: 1px solid black;">
-                                        <label for="">{{getMatched.controls[i].get('header').value}} </label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="border: 1px solid black;">
-                                        <label for="">{{getMatched.controls[i].get('matchingString').value}} </label>
-                                    </td>
-                                </tr>
-                            </table>
+                            <div class="transformation">
+                                <div>Before</div>
+                                <div>After</div>
+                            </div>
+                            <div class="matchedList" *ngFor=" let matched of getMatched.controls ; let i = index">
+
+                                <div class="before">
+                                    <label for="">{{getMatched.controls[i].get('header').value}} </label>
+                                </div>
+                                <div class="arrow"><i class="fa fa-chevron-right"></i><i
+                                        class="fa fa-chevron-right"></i> <i class="fa fa-chevron-right"></i> </div>
+                                <div class="after">
+                                    <label for="">{{getMatched.controls[i].get('matchingString').value}} </label>
+                                </div>
+
+                            </div>
                         </div>
                         <div>
-                            <button mat-flat-button class="startImport" *ngIf="startImport"  type="button"
-                                (click)="startImporting()">
+                            <button mat-flat-button class="startImport" *ngIf="startImport" type="button"
+                                (click)="startImporting(stepper)">
                                 Start import
                             </button>
                         </div>
                     </div>
                 </div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext>Next</button>
             </div>
         </form>
     </mat-step>
     <mat-step>
         <ng-template matStepLabel>Done</ng-template>
-        <div> 
+        <div style="text-align: center;">
             <h1>Imported data</h1>
             <div>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <td scope="col" border="1px" *ngFor="let header of tab;">
+                <table id="data" class="table">
+                    <tr>
+                        <td style="
+                        background-color:rgb(0, 83, 160); ;
+                        color: white">
+                            <span>ID</span>
+                        </td>
+                        <th style="
+                        background-color:rgb(0, 83, 160); ;
+                        color: white" scope="col" *ngFor="let header of tab;">
+                            <span >
                                 {{header}}
-                            </td>
-                        </tr>
-                    </thead>
-                    <tbody *ngFor="">
-
-                    </tbody>
+                            </span>
+                        </th>
+                    </tr>
+                    <tr *ngFor="let row of data[0];let i=index">
+                        <td>
+                            {{i+1}}
+                        </td>
+                        <td scope="col" *ngFor="let column of tab;">
+                            {{row[column]}}
+                        </td>
+                    </tr>
                 </table>
             </div>
         </div>
-        <p>You are now done.</p>
-        
+
     </mat-step>
 </mat-horizontal-stepper>
