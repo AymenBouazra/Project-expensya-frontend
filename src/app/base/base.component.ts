@@ -11,8 +11,9 @@ import { __values } from 'tslib';
 })
 export class BaseComponent implements OnInit {
   // selected = 'aaaaa';
-  
-  submitted= false
+  tab = [];
+  data = [];
+  submitted = false;
   isLinear = false;
   options = [];
   hideConfirm = false;
@@ -20,18 +21,16 @@ export class BaseComponent implements OnInit {
   startImport = false;
   nothingToMatch = false;
   expensyaList: string[] = [];
-  matching : FormGroup = new FormGroup({
-    matched : new FormArray([]),
-    notMatched : new FormArray([])
-  })
+  matching: FormGroup = new FormGroup({
+    matched: new FormArray([]),
+    notMatched: new FormArray([]),
+  });
   headersNotMatched: any;
   headerMatched: any;
   selectedKey = '';
+  headersImported = [];
 
-  constructor(
-    private appService: AppService,
-    private snackBar: MatSnackBar
-  ) {}
+  constructor(private appService: AppService, private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {}
   @ViewChild('fileDropRef', { static: false }) fileDropEl: ElementRef;
@@ -90,24 +89,24 @@ export class BaseComponent implements OnInit {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
   }
 
-  get getMatched() : FormArray {
-    return this.matching.get('matched') as FormArray
+  get getMatched(): FormArray {
+    return this.matching.get('matched') as FormArray;
   }
 
-  get getNotMatched() : FormArray {
-    return this.matching.get('notMatched') as FormArray
+  get getNotMatched(): FormArray {
+    return this.matching.get('notMatched') as FormArray;
   }
 
   uploadFileAndMatching(index: number, stepper: MatStepper) {
     this.appService.upload(this.files[0]).subscribe(
       (response: any) => {
-        this.fileName = response.filename
+        this.fileName = response.filename;
         this.headerMatched = response.headersMatched;
         this.headersNotMatched = response.headersNotMatched;
-        console.log(this.files[0]);        
-        console.log(this.headerMatched);
-        console.log(this.headersNotMatched);
-        response.headersNotMatched.forEach((header:any) => {
+        // console.log(this.files[0]);
+        // console.log(this.headerMatched);
+        // console.log(this.headersNotMatched);
+        response.headersNotMatched.forEach((header: any) => {
           this.getNotMatched.push(
             new FormGroup({
               key: new FormControl(header.key),
@@ -115,7 +114,7 @@ export class BaseComponent implements OnInit {
             })
           );
         });
-        response.headersMatched.forEach((header:any) => {
+        response.headersMatched.forEach((header: any) => {
           this.getMatched.push(
             new FormGroup({
               header: new FormControl(header.key),
@@ -135,32 +134,69 @@ export class BaseComponent implements OnInit {
   changevalues(e, i) {
     this.selectedKey = e;
     this.options[i] = this.selectedKey;
-    console.log(this.options);
+    // console.log(this.options);
   }
 
   confirm() {
-      this.options.forEach((key,i) => {
-        console.log(key);
-        
-        this.getMatched.push( new FormGroup({
+    this.options.forEach((key, i) => {
+      // console.log(key);
+
+      this.getMatched.push(
+        new FormGroup({
           header: new FormControl(this.headersNotMatched[i].key),
           matchingString: new FormControl(key),
-        }));
-      });
-      while (this.getNotMatched.length !== 0) {
-        this.getNotMatched.removeAt(0);
-      }
-      this.hideConfirm = true;
-      this.startImport = true;
-      this.nothingToMatch = true ;
-      console.log(this.getMatched.value);
+        })
+      );
+    });
+    while (this.getNotMatched.length !== 0) {
+      this.getNotMatched.removeAt(0);
+    }
+    this.hideConfirm = true;
+    this.startImport = true;
+    this.nothingToMatch = true;
+    // console.log(this.getMatched.value);
   }
 
-  startImporting(){
+  startImporting() {
     console.log(this.matching.value);
-    
-    this.appService.import(this.getMatched.value,this.fileName).subscribe((res)=>{
-      console.log(res);
-    })
+    this.appService
+      .import(this.getMatched.value, this.fileName)
+      .subscribe((res) => {
+        console.log(res);
+        let values = [];
+        let importedValues = [];
+        this.data.push(Object.values(res));
+        console.log(this.data);
+        let keys = Object.keys(res[0]);
+        console.log(keys);
+        for (let i = 0; i < this.data[0].length; i++) {
+          values.push(Object.values(this.data[0][i]));
+          values[i].shift();
+          values[i].pop();
+          values[i].pop();
+        }
+        // methode 2
+        // for(let i = 0 ; i<tab.length ; i++){
+        //     tab[i].pop()
+        //    for(let j = 0 ; j<tab[i].length ; j++){
+
+        //     if (j==0 || j==tab[i].length-1 ) {
+        //         tab[i].splice(j,1)
+        //     }
+        // }
+
+        console.log(values);
+
+        for (let i = 0; i < keys.length; i++) {
+          if (
+            keys[i] !== '_id' &&
+            keys[i] !== 'createdAt' &&
+            keys[i] !== 'updatedAt'
+          ) {
+            this.tab.push(keys[i]);
+          }
+        }
+        console.log(this.tab);
+      });
   }
 }

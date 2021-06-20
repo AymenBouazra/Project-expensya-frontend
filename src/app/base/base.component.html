@@ -107,10 +107,24 @@
     </mat-step>
     <mat-step>
         <ng-template matStepLabel>Done</ng-template>
-        <p>You are now done.</p>
-        <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="stepper.reset()">Reset</button>
+        <div> 
+            <h1>Imported data</h1>
+            <div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td scope="col" border="1px" *ngFor="let header of tab;">
+                                {{header}}
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="">
+
+                    </tbody>
+                </table>
+            </div>
         </div>
+        <p>You are now done.</p>
+        
     </mat-step>
 </mat-horizontal-stepper>
