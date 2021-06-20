@@ -12,6 +12,7 @@ import { __values } from 'tslib';
 export class BaseComponent implements OnInit {
   // selected = 'aaaaa';
   tab = [];
+  values = [];
   data = [];
   submitted = false;
   isLinear = false;
@@ -157,36 +158,22 @@ export class BaseComponent implements OnInit {
     // console.log(this.getMatched.value);
   }
 
-  startImporting() {
+  startImporting(stepper: MatStepper) {
     console.log(this.matching.value);
     this.appService
       .import(this.getMatched.value, this.fileName)
       .subscribe((res) => {
         console.log(res);
-        let values = [];
-        let importedValues = [];
         this.data.push(Object.values(res));
         console.log(this.data);
         let keys = Object.keys(res[0]);
         console.log(keys);
         for (let i = 0; i < this.data[0].length; i++) {
-          values.push(Object.values(this.data[0][i]));
-          values[i].shift();
-          values[i].pop();
-          values[i].pop();
+          delete (this.data[0])[i]._id
+          delete (this.data[0])[i].createdAt
+          delete (this.data[0])[i].updatedAt
         }
-        // methode 2
-        // for(let i = 0 ; i<tab.length ; i++){
-        //     tab[i].pop()
-        //    for(let j = 0 ; j<tab[i].length ; j++){
-
-        //     if (j==0 || j==tab[i].length-1 ) {
-        //         tab[i].splice(j,1)
-        //     }
-        // }
-
-        console.log(values);
-
+        console.log(this.data);
         for (let i = 0; i < keys.length; i++) {
           if (
             keys[i] !== '_id' &&
@@ -196,7 +183,9 @@ export class BaseComponent implements OnInit {
             this.tab.push(keys[i]);
           }
         }
+        
         console.log(this.tab);
+        stepper.next();
       });
   }
 }
