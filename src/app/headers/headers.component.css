@@ -27,3 +27,10 @@ table {
       font-weight: 500;
       color: rgb(0, 83, 160);
   }
+  table {
+    width: 100%;
+  }
+  
+  th.mat-sort-header-sorted {
+    color: black;
+  }

@@ -21,8 +21,10 @@ import { MatDividerModule } from '@angular/material/divider';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
-import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
 import { HeadersComponent } from './headers/headers.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,8 +51,10 @@ import { HeadersComponent } from './headers/headers.component';
     MatSelectModule,
     MatDividerModule,
     ReactiveFormsModule,
-    // RxReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
