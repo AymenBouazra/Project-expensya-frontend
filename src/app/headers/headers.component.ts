@@ -20,7 +20,7 @@ export class HeadersComponent implements OnInit {
   constructor(private service: AppService) { }
   
   ngOnInit(): void {
-    
+    this.getHeader()
   }
 
   ngAfterViewInit(){
