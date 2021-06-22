@@ -1,19 +1,25 @@
 <div class="container">
     <h1>Headers with their matching strings</h1>
-    <table>
-        <thead>
-            <tr>
-                <th class="header" scope="col">#</th>
-                <th class="header" scope="col">Header</th>
-                <th class="header" scope="col">Matching string</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="" *ngFor="let headers of listHeader;let i=index">
-                <td>{{i+1}}</td>
-                <td>{{headers.header}}</td>
-                <td>{{headers.matchingString}}</td>
-            </tr>
-        </tbody>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort matSortActive = "header" matSortDirection = "asc">
+
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> # </th>
+            <td mat-cell *matCellDef="let element" > {{dataSource.filteredData.indexOf(element) + 1}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Header">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Header </th>
+            <td mat-cell *matCellDef="let element"> {{element.header}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Matching string">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Matching string </th>
+            <td mat-cell *matCellDef="let element"> {{element.matchingString | slice: 0:4}} </td>
+        </ng-container>
+        
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        
     </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 </div>
