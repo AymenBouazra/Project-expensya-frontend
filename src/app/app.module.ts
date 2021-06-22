@@ -22,6 +22,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
+import { HeadersComponent } from './headers/headers.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +31,7 @@ import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
     ProgressComponent,
     DndDirective,
     SpinnerComponent,
+    HeadersComponent
   ],
   imports: [
     BrowserModule,

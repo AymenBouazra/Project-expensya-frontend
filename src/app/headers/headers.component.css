@@ -1,0 +1,29 @@
+table {
+    border-spacing: 0px !important;
+  }
+  
+  tr,
+  th,
+  td {
+    border: 1px solid #dee2e6;
+    font-size: 25px;
+    padding: 0.75rem;
+  }
+
+  .header{
+    background-color:rgb(0, 83, 160); ;
+    color: white
+  }
+
+  .container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  h1{
+      padding: 20px;
+      font-size: 32px;
+      font-weight: 500;
+      color: rgb(0, 83, 160);
+  }
