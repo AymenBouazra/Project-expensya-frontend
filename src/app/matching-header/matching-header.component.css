@@ -145,7 +145,7 @@ section {
 .browseFile {
   color: white;
   /* width: 210px;
-  height: 70px; */
+    height: 70px; */
   font-size: 28px;
   font-weight: 400;
   border-radius: 21.5px;
@@ -321,15 +321,14 @@ section {
   float: right;
 }
 
-table{
+table {
   border-spacing: 0px !important;
 }
 
 tr,
 th,
 td {
-  border: 1px solid #dee2e6;;
+  border: 1px solid #dee2e6;
   font-size: 25px;
   padding: 0.75rem;
 }
-

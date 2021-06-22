@@ -1,16 +1,15 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { AppService } from '../services/app.service';
+import { AppService } from './app.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatStepper } from '@angular/material/stepper';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import { __values } from 'tslib';
+
 @Component({
-  selector: 'app-base',
-  templateUrl: './base.component.html',
-  styleUrls: ['./base.component.css'],
+  selector: 'app-matching-header',
+  templateUrl: './matching-header.component.html',
+  styleUrls: ['./matching-header.component.css']
 })
-export class BaseComponent implements OnInit {
-  // selected = 'aaaaa';
+export class MatchingHeaderComponent implements OnInit {
   tab = [];
   values = [];
   data = [];
@@ -22,16 +21,18 @@ export class BaseComponent implements OnInit {
   startImport = false;
   nothingToMatch = false;
   expensyaList: string[] = [];
-  matching: FormGroup = new FormGroup({
-    matched: new FormArray([]),
-    notMatched: new FormArray([]),
-  });
+  matching: FormGroup
   headersNotMatched: any;
   headerMatched: any;
   selectedKey = '';
   headersImported = [];
 
-  constructor(private appService: AppService, private snackBar: MatSnackBar) {}
+  constructor(private appService: AppService, private snackBar: MatSnackBar) {
+    this.matching = new FormGroup({
+      matched: new FormArray([]),
+      notMatched: new FormArray([]),
+    });
+  }
 
   ngOnInit(): void {}
   @ViewChild('fileDropRef', { static: false }) fileDropEl: ElementRef;

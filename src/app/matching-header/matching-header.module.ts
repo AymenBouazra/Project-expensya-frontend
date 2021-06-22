@@ -1,37 +1,33 @@
 import { NgModule } from '@angular/core';
-import { MatCardModule } from '@angular/material/card';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { MatchingHeaderRoutingModule } from './matching-header-routing.module';
+import { MatchingHeaderComponent } from './matching-header.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from '../app-routing.module';
+import { MatCardModule } from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { Page404Component } from './page404/page404.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { NavbarComponent } from './navbar/navbar.component';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
-import { ProgressComponent } from './progress/progress.component';
-import { DndDirective } from './dnd.directive';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDividerModule } from '@angular/material/divider';
-import { SpinnerComponent } from './spinner/spinner.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatInputModule} from '@angular/material/input';
-import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
+
+
 @NgModule({
   declarations: [
-    AppComponent,
-    NavbarComponent,
-    Page404Component,
-    ProgressComponent,
-    DndDirective,
-    SpinnerComponent,
+    MatchingHeaderComponent
   ],
   imports: [
+    CommonModule,
+    MatchingHeaderRoutingModule,
+    MatSnackBarModule,
     BrowserModule,
     AppRoutingModule,
     MatCardModule,
@@ -47,10 +43,7 @@ import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
     MatSelectModule,
     MatDividerModule,
     ReactiveFormsModule,
-    // RxReactiveFormsModule,
     FormsModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  ]
 })
-export class AppModule { }
+export class MatchingHeaderModule { }
