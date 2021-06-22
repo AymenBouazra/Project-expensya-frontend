@@ -19,4 +19,8 @@ export class AppService {
   import(header: any, filename: any) {
     return this.http.post(`${this.baseUrl}/startImport/${filename}`, header);
   }
+
+  getAllHeaders(){
+    return this.http.get(`${this.baseUrl}/getHeaders`);
+  }
 }

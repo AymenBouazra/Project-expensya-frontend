@@ -1,0 +1,19 @@
+<div class="container">
+    <h1>Headers with their matching strings</h1>
+    <table>
+        <thead>
+            <tr>
+                <th class="header" scope="col">#</th>
+                <th class="header" scope="col">Header</th>
+                <th class="header" scope="col">Matching string</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="" *ngFor="let headers of listHeader;let i=index">
+                <td>{{i+1}}</td>
+                <td>{{headers.header}}</td>
+                <td>{{headers.matchingString}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
