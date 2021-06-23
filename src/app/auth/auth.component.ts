@@ -17,6 +17,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class AuthComponent implements OnInit {
   hide = true;
+  showLogoutButton=false
   loginForm: FormGroup = new FormGroup({
     Email : new FormControl('',[Validators.required,Validators.email]),
     Password : new FormControl('',[Validators.required,Validators.minLength(6)])

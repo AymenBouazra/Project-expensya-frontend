@@ -8,14 +8,22 @@ import { LoginService } from '../auth/login.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
-  constructor(private loginService:LoginService, private router:Router) { }
+  showButton=false
+  constructor(private loginService:LoginService, private router:Router) {
+     let token = localStorage.getItem('token')
+  if(token==null){
+    this.showButton=true
+    router.navigate(['/login'])
+  } 
+}
 
   ngOnInit(): void {
+    
   }
   logout() {
     this.loginService.logout().subscribe((response: any) => {
-      this.router.navigate(['/'])
+      localStorage.removeItem('token')
+      window.location.reload();
     })
   }
 }

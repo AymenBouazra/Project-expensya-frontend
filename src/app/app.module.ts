@@ -13,18 +13,20 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ProgressComponent } from './progress/progress.component';
 import { DndDirective } from './dnd.directive';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDividerModule } from '@angular/material/divider';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 import { HeadersComponent } from './headers/headers.component';
 import { MatTableModule } from '@angular/material/table';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { TokenInterceptor } from './http-interceptor/token.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +58,15 @@ import { MatSortModule } from '@angular/material/sort';
     MatPaginatorModule,
     MatSortModule,
   ],
-  providers: [],
+  providers: [{
+    provide: LocationStrategy,
+    useClass: HashLocationStrategy
+  },
+  {
+    provide : HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi   : true,
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

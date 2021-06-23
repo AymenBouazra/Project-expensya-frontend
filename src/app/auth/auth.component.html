@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container" >
   <div class="loginHeader">Login</div>
-  <div>
-    <form class="example-form" [formGroup]="loginForm" (ngSubmit)="SignIn()">
+  <div class="example-form">
+    <form class="formLogin" [formGroup]="loginForm" (ngSubmit)="SignIn()">
       <mat-form-field class="example-full-width">
-        <mat-label>Email</mat-label>
+        <mat-label><i class="far fa-user"></i> Email</mat-label>
         <input type="email" matInput formControlName="Email" [errorStateMatcher]="matcher"
           placeholder="Ex. pat@example.com">
         <mat-error
@@ -15,7 +15,7 @@
         </mat-error>
       </mat-form-field>
       <mat-form-field class="example-full-width">
-        <mat-label>Password</mat-label>
+        <mat-label><i class="fas fa-key"></i> Password</mat-label>
         <input matInput [type]="hide ? 'password' : 'text'" formControlName="Password" [errorStateMatcher]="matcher" placeholder="Password">
         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
           [attr.aria-pressed]="hide"  >
