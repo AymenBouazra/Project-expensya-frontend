@@ -4,7 +4,7 @@
             <img src="assets/expensya.png"  alt="">
         </div>
         <span class="example-spacer"></span>
-        <div>
+        <div *ngIf="!showButton">
             <button mat-button class="navbar-link" (click)="logout()">Logout <i class="fas fa-sign-out-alt"></i> </button>
         </div>
     </mat-toolbar>

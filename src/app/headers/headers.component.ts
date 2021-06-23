@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AppService } from '../matching-header/app.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatSort } from '@angular/material/sort';
+import { MatSort} from '@angular/material/sort';
 
 @Component({
   selector: 'app-headers',
@@ -10,27 +10,27 @@ import { MatSort } from '@angular/material/sort';
   styleUrls: ['./headers.component.css']
 })
 
-export class HeadersComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'Header', 'Matching string'];
+export class HeadersComponent implements OnInit{
+  displayedColumns: string[] = ['id', 'header', 'matchingString','update'];
   dataSource: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatSort, {static: false}) sort:MatSort
   
 
-  constructor(private service: AppService) { }
+
+  constructor(private service: AppService, private targetElement: ElementRef) { }
   
   ngOnInit(): void {
     this.getHeader()
   }
-
-  ngAfterViewInit(){
-  }
+  
 
   getHeader(){
     this.service.getAllHeaders().subscribe((response: any) => {
-      this.dataSource = new MatTableDataSource<any>(response);
+      this.dataSource = new MatTableDataSource(response);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+      console.log(this.sort);
     }, (error) => {
       console.log(error);
     })

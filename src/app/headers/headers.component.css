@@ -28,9 +28,28 @@ table {
       color: rgb(0, 83, 160);
   }
   table {
-    width: 100%;
+    width: 80%;
   }
   
   th.mat-sort-header-sorted {
     color: black;
+  }
+  th.headerColor{
+    color: rgb(55, 125, 255);
+  }
+
+  th.idWidth{
+    width: 50px;
+  }
+
+  th.headerWidth{
+    width: 300px;
+  }
+
+  th.matchingStringWidth{
+    width: auto;
+  }
+  
+  th.update{
+    width: 30px;
   }
