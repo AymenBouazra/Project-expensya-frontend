@@ -24,5 +24,8 @@ export class AppService {
     return this.http.get(`${this.baseUrl}/getHeaders`);
   }
 
+  updateMatching(id:any, data:any): Observable<any>{
+    return this.http.put(`${this.baseUrl}/matchingStrings/${id}`,data);
+  }
  
 }
