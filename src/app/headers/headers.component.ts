@@ -1,8 +1,10 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AppService } from '../matching-header/app.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort} from '@angular/material/sort';
+import { MatDialog } from '@angular/material/dialog';
+import { HeaderUpdateDialogComponent } from '../header-update-dialog/header-update-dialog.component';
 
 @Component({
   selector: 'app-headers',
@@ -18,8 +20,10 @@ export class HeadersComponent implements OnInit{
   
 
 
-  constructor(private service: AppService, private targetElement: ElementRef) { }
-  
+  constructor(private service: AppService, private Dialog:MatDialog) { }
+  id:any
+  res:any
+
   ngOnInit(): void {
     this.getHeader()
   }
@@ -27,6 +31,7 @@ export class HeadersComponent implements OnInit{
 
   getHeader(){
     this.service.getAllHeaders().subscribe((response: any) => {
+      console.log(response);
       this.dataSource = new MatTableDataSource(response);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
@@ -35,4 +40,18 @@ export class HeadersComponent implements OnInit{
       console.log(error);
     })
   }
+
+
+  updateMatchingString(){
+    const dialogRef = this.Dialog.open(HeaderUpdateDialogComponent,{
+      width: '700px',
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.res = result;
+    });
+  }
+  
 }

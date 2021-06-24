@@ -23,4 +23,6 @@ export class AppService {
   getAllHeaders(){
     return this.http.get(`${this.baseUrl}/getHeaders`);
   }
+
+ 
 }

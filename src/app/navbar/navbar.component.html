@@ -4,8 +4,13 @@
             <img src="assets/expensya.png"  alt="">
         </div>
         <span class="example-spacer"></span>
-        <div *ngIf="!showButton">
-            <button mat-button class="navbar-link" (click)="logout()">Logout <i class="fas fa-sign-out-alt"></i> </button>
+        <div *ngIf="!showButton" class="navLinks">
+          
+                <button mat-button class="link" routerLink="/matching-header"> Import file </button>
+                <button mat-button class="link" routerLink="/headers"> Available headers </button>
+            
+            
         </div>
+        <button mat-button class="logout" *ngIf="!showButton" (click)="logout()">Logout <i class="fas fa-sign-out-alt"></i> </button>
     </mat-toolbar>
 </div>

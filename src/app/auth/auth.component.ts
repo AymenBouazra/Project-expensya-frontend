@@ -17,7 +17,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class AuthComponent implements OnInit {
   hide = true;
-  showLogoutButton=false
+  showButton=false
   loginForm: FormGroup = new FormGroup({
     Email : new FormControl('',[Validators.required,Validators.email]),
     Password : new FormControl('',[Validators.required,Validators.minLength(6)])
@@ -26,7 +26,6 @@ export class AuthComponent implements OnInit {
   constructor(private loginService: LoginService,private router:Router,private snackbar:MatSnackBar ) { }
   
   ngOnInit(): void {
-    
   }
   
   SignIn(){

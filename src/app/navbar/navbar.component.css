@@ -17,14 +17,14 @@
     background-color: white !important;
 }
 
-.navbar-link{
+.logout{
     font-size: 20px;
     border-radius: 15px;
     margin: 5px;
     background-color: rgb(255, 255, 255);
 }
 
-.navbar-link:hover{
+.logout:hover{
     color: rgb(0, 153, 255);
     background-color: rgb(255, 255, 255) !important;
     border-radius: 5px;
@@ -33,3 +33,24 @@
 .expensyaLogo img{
     width: 135px;
 }
+.navLinks{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+margin-right: 50px;
+}
+.link{
+    font-size: 24px;
+    border-radius: 15px;
+    margin: 5px;
+    color: rgb(0, 153, 255);
+    transition: 0.5s;
+}
+
+.link:hover{
+    color: blue;
+    transition: 0.5s;
+    background-color: rgb(255, 255, 255) !important;
+}
+

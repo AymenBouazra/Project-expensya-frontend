@@ -42,8 +42,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     MatSelectModule,
     MatDividerModule,
-    ReactiveFormsModule,
-    FormsModule
+    // ReactiveFormsModule,
+    // FormsModule
   ]
 })
 export class MatchingHeaderModule { }

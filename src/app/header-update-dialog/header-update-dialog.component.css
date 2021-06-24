@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 15px;
+}
+.example-form {
+  width: 100%;
+}
+.formLogin {
+  padding: 20px;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+mat-label {
+  font-size: 20px;
+}
+
+
