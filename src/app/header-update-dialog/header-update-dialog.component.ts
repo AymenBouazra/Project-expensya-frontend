@@ -1,9 +1,6 @@
-import { Component,  OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { Component,  Inject,  OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { AppService } from '../matching-header/app.service';
 import { MatchingStringService } from './matching-string.service';
 
 @Component({
@@ -12,29 +9,29 @@ import { MatchingStringService } from './matching-string.service';
   styleUrls: ['./header-update-dialog.component.css']
 })
 export class HeaderUpdateDialogComponent implements OnInit {
-  displayedColumns: string[] = ['matchingString','update'];
-  dataSource: MatTableDataSource<any>;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort, {static: false}) sort:MatSort
   
   id:any;
 
-  constructor( private service: MatchingStringService ,private route: ActivatedRoute) { }
+  constructor( 
+    private service: MatchingStringService ,
+    private route: ActivatedRoute,
+    public dialogRef: MatDialogRef<HeaderUpdateDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+    ) { }
 
   ngOnInit(): void {
-    this.id =  this.route.snapshot.params['id'];
     this.getMatchingStrings()
   }
 
   getMatchingStrings(){
     this.service.getMatchingString(this.id).subscribe((response: any) => {
-      this.dataSource = new MatTableDataSource(response);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-      console.log(this.sort);
+      console.log(this.id);
     }, (error) => {
       console.log(error);
     })
+  }
+  updateStrings(){
+
   }
 
 }
