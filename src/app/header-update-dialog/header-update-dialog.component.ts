@@ -1,9 +1,6 @@
 import { Component,  OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { AppService } from '../matching-header/app.service';
 import { MatchingStringService } from './matching-string.service';
 
 @Component({
@@ -12,11 +9,9 @@ import { MatchingStringService } from './matching-string.service';
   styleUrls: ['./header-update-dialog.component.css']
 })
 export class HeaderUpdateDialogComponent implements OnInit {
-  displayedColumns: string[] = ['matchingString','update'];
-  dataSource: MatTableDataSource<any>;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort, {static: false}) sort:MatSort
   
+  matchingString = new FormControl('');
+
   id:any;
 
   constructor( private service: MatchingStringService ,private route: ActivatedRoute) { }
@@ -28,13 +23,13 @@ export class HeaderUpdateDialogComponent implements OnInit {
 
   getMatchingStrings(){
     this.service.getMatchingString(this.id).subscribe((response: any) => {
-      this.dataSource = new MatTableDataSource(response);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-      console.log(this.sort);
+
     }, (error) => {
       console.log(error);
     })
   }
 
+  updateStrings(){
+
+  }
 }
