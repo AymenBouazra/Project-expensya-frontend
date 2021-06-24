@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall":"ng build --aot --prod"
+    "postinstall": "ng build --aot --prod"
   },
   "private": true,
   "dependencies": {
@@ -26,6 +26,7 @@
     "express": "^4.17.1",
     "fontawesome": "^5.6.3",
     "jwt-decode": "^3.1.2",
+    "path": "^0.12.7",
     "rxjs": "~6.6.0",
     "toastr": "^2.1.4",
     "tslib": "^2.0.0",
@@ -50,9 +51,8 @@
     "tslint": "~6.1.0",
     "typescript": "~4.1.5"
   },
-  "engines" :{
-    "node":"~14.17.0",
-    "npm":"~7.15.0"
+  "engines": {
+    "node": "~14.17.0",
+    "npm": "~7.15.0"
   }
-  
 }
