@@ -18,8 +18,6 @@ export class HeadersComponent implements OnInit{
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) sort:MatSort
   
-
-
   constructor(private service: AppService, public Dialog:MatDialog) { }
   
 
@@ -42,14 +40,14 @@ export class HeadersComponent implements OnInit{
 
 
   updateMatchingString(data){
-    console.log(data.matchingString);
-    
     const dialogRef = this.Dialog.open(HeaderUpdateDialogComponent,{
       width: '700px',
       data: {matchingString : data.matchingString }
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      
       console.log('The dialog was closed');
     });
   }
