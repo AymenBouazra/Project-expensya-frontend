@@ -1,5 +1,7 @@
+
 import { Component,  Inject,  OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
 import { ActivatedRoute } from '@angular/router';
 import { MatchingStringService } from './matching-string.service';
 
@@ -10,6 +12,8 @@ import { MatchingStringService } from './matching-string.service';
 })
 export class HeaderUpdateDialogComponent implements OnInit {
   
+  matchingString = new FormControl('');
+
   id:any;
 
   constructor( 
@@ -25,7 +29,7 @@ export class HeaderUpdateDialogComponent implements OnInit {
 
   getMatchingStrings(){
     this.service.getMatchingString(this.id).subscribe((response: any) => {
-      console.log(this.id);
+
     }, (error) => {
       console.log(error);
     })
@@ -34,4 +38,7 @@ export class HeaderUpdateDialogComponent implements OnInit {
 
   }
 
+  updateStrings(){
+
+  }
 }
