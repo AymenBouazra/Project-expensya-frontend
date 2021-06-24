@@ -16,7 +16,7 @@
         <ng-container matColumnDef="update">
             <th mat-header-cell *matHeaderCellDef class="headerColor update"> Update </th>
             <td mat-cell *matCellDef="let element"> 
-                <button mat-raised-button (click)="updateMatchingString()"><mat-icon>update</mat-icon></button>
+                <button mat-raised-button (click)="updateMatchingString(element)"><mat-icon>update</mat-icon></button>
             </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

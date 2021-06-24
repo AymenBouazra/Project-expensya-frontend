@@ -2,7 +2,7 @@
     <h1 style="margin: 20px;">Update matching string</h1>
     <mat-form-field class="example-full-width">
         <mat-label>Matching string</mat-label>
-        <input type="text" matInput formControlName="matchingString" placeholder="text1,text2...">
+        <input type="text" matInput [(ngModel)]="data.matchingString" placeholder="text1,text2...">
     </mat-form-field>
     <button mat-raised-button (click)="updateStrings()">Update </button>
 </div>

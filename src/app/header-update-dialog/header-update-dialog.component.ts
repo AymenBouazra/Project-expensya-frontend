@@ -1,5 +1,7 @@
-import { Component,  OnInit, ViewChild } from '@angular/core';
-import { FormControl } from '@angular/forms';
+
+import { Component,  Inject,  OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
 import { ActivatedRoute } from '@angular/router';
 import { MatchingStringService } from './matching-string.service';
 
@@ -14,10 +16,14 @@ export class HeaderUpdateDialogComponent implements OnInit {
 
   id:any;
 
-  constructor( private service: MatchingStringService ,private route: ActivatedRoute) { }
+  constructor( 
+    private service: MatchingStringService ,
+    private route: ActivatedRoute,
+    public dialogRef: MatDialogRef<HeaderUpdateDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+    ) { }
 
   ngOnInit(): void {
-    this.id =  this.route.snapshot.params['id'];
     this.getMatchingStrings()
   }
 
@@ -27,6 +33,9 @@ export class HeaderUpdateDialogComponent implements OnInit {
     }, (error) => {
       console.log(error);
     })
+  }
+  updateStrings(){
+
   }
 
   updateStrings(){

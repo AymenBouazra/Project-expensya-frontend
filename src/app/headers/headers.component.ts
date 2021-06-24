@@ -20,9 +20,8 @@ export class HeadersComponent implements OnInit{
   
 
 
-  constructor(private service: AppService, private Dialog:MatDialog) { }
-  id:any
-  res:any
+  constructor(private service: AppService, public Dialog:MatDialog) { }
+  
 
   ngOnInit(): void {
     this.getHeader()
@@ -42,15 +41,16 @@ export class HeadersComponent implements OnInit{
   }
 
 
-  updateMatchingString(){
+  updateMatchingString(data){
+    console.log(data.matchingString);
+    
     const dialogRef = this.Dialog.open(HeaderUpdateDialogComponent,{
       width: '700px',
-      data: {}
+      data: {matchingString : data.matchingString }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.res = result;
     });
   }
   
