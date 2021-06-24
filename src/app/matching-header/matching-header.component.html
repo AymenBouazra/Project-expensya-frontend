@@ -48,10 +48,10 @@
                         </span>
                     </div>
                     <h1 class="nothingToMatch" *ngIf="nothingToMatch">Headers selected and there is nothing to match.</h1>
-                    <div [formGroup]="matching" (ngSubmit)="confirm()">
+                    <div formGroup="matching" >
                         <div formArrayName="notMatched"
-                            *ngFor="let header of getNotMatched.get('notMatched')['controls']; let i=index">
-                            <div class="rowMatch" [formGroupName]="i">
+                            *ngFor="let header of getNotMatched.controls; let i=index">
+                            <div class="rowMatch" >
                                 <div class="headerOfClient">
                                     <span>
                                         {{getNotMatched.controls[i].get('key').value}}
@@ -86,7 +86,7 @@
                     <mat-divider></mat-divider>
                 </div>
     
-                <button mat-flat-button class="confirm" type="submit" *ngIf="!hideConfirm"> Confirm matching <i
+                <button mat-flat-button class="confirm" type="button" (click)="confirm()" *ngIf="!hideConfirm"> Confirm matching <i
                         class="fa iconConfirm fa-chevron-right" aria-hidden="true"></i>
                 </button>
             </div>

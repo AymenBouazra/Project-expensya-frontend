@@ -10,15 +10,15 @@ import { LoginService } from '../auth/login.service';
 export class NavbarComponent implements OnInit {
   showButton=false
   constructor(private loginService:LoginService, private router:Router) {
-     let token = localStorage.getItem('token')
-  if(token==null){
-    this.showButton=true
-    router.navigate(['/login'])
-  } 
+     
 }
 
   ngOnInit(): void {
-    
+    let token = localStorage.getItem('token')
+  if(token==null){
+    this.showButton=true
+    this.router.navigate(['/login'])
+  } 
   }
   logout() {
     this.loginService.logout().subscribe((response: any) => {

@@ -3,6 +3,7 @@ import { AppService } from './app.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatStepper } from '@angular/material/stepper';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-matching-header',
@@ -26,15 +27,21 @@ export class MatchingHeaderComponent implements OnInit {
   headerMatched: any;
   selectedKey = '';
   headersImported = [];
+  showButton=false;
 
-  constructor(private appService: AppService, private snackBar: MatSnackBar) {
+  constructor(private appService: AppService,private router:Router, private snackBar: MatSnackBar) {
     this.matching = new FormGroup({
       matched: new FormArray([]),
       notMatched: new FormArray([]),
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    let token = localStorage.getItem('token')
+  if(token==null){
+    this.showButton=true
+  } 
+  }
   @ViewChild('fileDropRef', { static: false }) fileDropEl: ElementRef;
   files: any[] = [];
 
@@ -105,9 +112,9 @@ export class MatchingHeaderComponent implements OnInit {
         this.fileName = response.filename;
         this.headerMatched = response.headersMatched;
         this.headersNotMatched = response.headersNotMatched;
-        // console.log(this.files[0]);
-        // console.log(this.headerMatched);
-        // console.log(this.headersNotMatched);
+        console.log(response);
+        console.log(this.headerMatched);
+        console.log(this.headersNotMatched);
         response.headersNotMatched.forEach((header: any) => {
           this.getNotMatched.push(
             new FormGroup({
