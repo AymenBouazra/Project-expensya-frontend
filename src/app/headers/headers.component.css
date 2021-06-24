@@ -50,6 +50,14 @@ table {
     width: auto;
   }
   
+  .updateAction{
+    background-color: rgb(55, 125, 255) !important;
+    color: white !important;
+  }
+  td,th{
+   padding: 0 20px !important;
+  }
+
   th.update{
     width: 30px;
   }

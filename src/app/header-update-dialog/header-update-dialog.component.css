@@ -18,5 +18,44 @@
 mat-label {
   font-size: 20px;
 }
+.addContaier{
+  display: flex;
+  justify-content: flex-end;
+}
+.addButton{
+  width: 50px !important;
+  background-color: rgb(105, 211, 0) !important;
+  color: white !important;
+  margin: 20px;
+}
 
+.inputs{
+  display: flex;
+  flex-direction: row;
+}
 
+.remove{
+  background-color: rgb(255, 58, 58) !important;
+}
+.alert{
+  background-color: #fff0f0;
+  color: #820000;
+  padding: 0.5rem;
+}
+
+.footerButtons{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.update{
+  width: 150px;
+  background-color: cornflowerblue !important;
+  color: rgb(255, 255, 255) !important;
+}
+
+.cancel{
+  width: 150px;
+  background-color: rgb(200, 200, 200) !important;
+  color: rgb(0, 0, 0) !important;
+}
