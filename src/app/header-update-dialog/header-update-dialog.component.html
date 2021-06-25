@@ -8,7 +8,7 @@
             <mat-form-field class="example-full-width">
                 <mat-label>String {{i+1}} </mat-label>
                 <input type="text" matInput [formControl]="formMatchingString.controls[i]" placeholder="Type a matching string here">
-                <div *ngIf="submitted && string.invalid || string.dirty || string.touched"
+                <div *ngIf="submitted && (string.invalid || string.dirty || string.touched)"
                 class="alert alert-danger">
                 <mat-error>
                     Please enter a valid string.
@@ -19,7 +19,7 @@
             <button mat-mini-fab class="remove" (click)="removeString(i)"><mat-icon>delete</mat-icon></button>
         </div>
         <div class="footerButtons">
-            <button mat-button class="cancel" (click)="cancel()"> <mat-icon>arrow_back_ios</mat-icon> Cancel</button>
+            <button mat-button class="cancel" type="button" (click)="cancel()"> <mat-icon>arrow_back_ios</mat-icon> Cancel</button>
             <button mat-button class="update" type="submit" >Update <mat-icon>publish</mat-icon></button>
         </div>
     </form>
