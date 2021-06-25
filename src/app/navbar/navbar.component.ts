@@ -10,18 +10,12 @@ import { LoginService } from '../auth/login.service';
 })
 export class NavbarComponent implements OnInit {
   isLoggedIn : Observable<boolean>;
-  // showButton=false
   constructor(private loginService:LoginService, private router:Router) {
     this.isLoggedIn = loginService.isLoggedIn();
 }
 
-  ngOnInit(): void {
-    // let token = localStorage.getItem('token')
-  // if(token==null){
-    // this.showButton=true
-    // this.router.navigate(['/login'])
-  // } 
-  }
+  ngOnInit(): void {}
+  
   logout() {
     this.loginService.logout().subscribe((response: any) => {
       localStorage.removeItem('token')
