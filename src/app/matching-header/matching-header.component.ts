@@ -112,9 +112,6 @@ export class MatchingHeaderComponent implements OnInit {
         this.fileName = response.filename;
         this.headerMatched = response.headersMatched;
         this.headersNotMatched = response.headersNotMatched;
-        console.log(response);
-        console.log(this.headerMatched);
-        console.log(this.headersNotMatched);
         response.headersNotMatched.forEach((header: any) => {
           this.getNotMatched.push(
             new FormGroup({
@@ -167,13 +164,10 @@ export class MatchingHeaderComponent implements OnInit {
   }
 
   startImporting(stepper: MatStepper) {
-    console.log(this.matching.value);
     this.appService
       .import(this.getMatched.value, this.fileName)
       .subscribe((res) => {
-        console.log(res);
         this.data.push(Object.values(res));
-        console.log(this.data);
         let keys = Object.keys(res[0]);
         console.log(keys);
         for (let i = 0; i < this.data[0].length; i++) {
@@ -181,7 +175,6 @@ export class MatchingHeaderComponent implements OnInit {
           delete (this.data[0])[i].createdAt
           delete (this.data[0])[i].updatedAt
         }
-        console.log(this.data);
         for (let i = 0; i < keys.length; i++) {
           if (
             keys[i] !== '_id' &&
@@ -191,8 +184,6 @@ export class MatchingHeaderComponent implements OnInit {
             this.tab.push(keys[i]);
           }
         }
-        
-        console.log(this.tab);
         stepper.next();
       });
   }
