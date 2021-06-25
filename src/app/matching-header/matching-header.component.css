@@ -225,6 +225,14 @@ section {
   display: flex;
   flex-direction: row;
 }
+.similarityKey {
+  font-size: 23px;
+  color: rgb(71, 114, 253);
+}
+
+.score{
+  font-size: 23px; color: rgb(206, 151, 0); float : right;
+}
 .notMatched {
   box-shadow: 0px 4px 16px rgb(51 102 255 / 20%);
   border-radius: 15px;

@@ -43,7 +43,7 @@ export class AuthComponent implements OnInit {
     },
       (error) => {
         console.log(error);
-        // this.toastr.error('Please verify your email and password!', 'Login Failed');
+        alert("Incorrect information, Please check your email and password.");
       })
   } 
   matcher = new MyErrorStateMatcher();
