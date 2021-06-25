@@ -27,7 +27,6 @@ export class MatchingHeaderComponent implements OnInit {
   headerMatched: any;
   selectedKey = '';
   headersImported = [];
-  showButton=false;
 
   constructor(private appService: AppService,private router:Router, private snackBar: MatSnackBar) {
     this.matching = new FormGroup({
@@ -36,12 +35,7 @@ export class MatchingHeaderComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    let token = localStorage.getItem('token')
-  if(token==null){
-    this.showButton=true
-  } 
-  }
+  ngOnInit(): void {}
   @ViewChild('fileDropRef', { static: false }) fileDropEl: ElementRef;
   files: any[] = [];
 
@@ -145,8 +139,6 @@ export class MatchingHeaderComponent implements OnInit {
 
   confirm() {
     this.options.forEach((key, i) => {
-      // console.log(key);
-
       this.getMatched.push(
         new FormGroup({
           header: new FormControl(this.headersNotMatched[i].key),
@@ -160,7 +152,6 @@ export class MatchingHeaderComponent implements OnInit {
     this.hideConfirm = true;
     this.startImport = true;
     this.nothingToMatch = true;
-    // console.log(this.getMatched.value);
   }
 
   startImporting(stepper: MatStepper) {
