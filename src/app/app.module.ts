@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -18,7 +18,6 @@ import { ProgressComponent } from './progress/progress.component';
 import { DndDirective } from './dnd.directive';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDividerModule } from '@angular/material/divider';
-import { SpinnerComponent } from './spinner/spinner.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { HeadersComponent } from './headers/headers.component';
@@ -36,7 +35,6 @@ import { HeaderUpdateDialogComponent } from './header-update-dialog/header-updat
     Page404Component,
     ProgressComponent,
     DndDirective,
-    SpinnerComponent,
     HeadersComponent,
     HeaderUpdateDialogComponent
   ],
@@ -62,6 +60,7 @@ import { HeaderUpdateDialogComponent } from './header-update-dialog/header-updat
     MatDialogModule,
     MatSortModule,
   ],
+
   providers: [{
     provide: LocationStrategy,
     useClass: HashLocationStrategy

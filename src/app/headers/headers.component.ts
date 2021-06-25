@@ -41,7 +41,6 @@ export class HeadersComponent implements OnInit {
       width: '700px',
       data: { matchingString: data.matchingString, id: data._id },
     });
-    console.log(data._id);
     dialogRef.afterClosed().subscribe((result) => {
       if (result !== null && result!==undefined) {
         //update service
