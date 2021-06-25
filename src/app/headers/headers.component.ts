@@ -6,6 +6,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { HeaderUpdateDialogComponent } from '../header-update-dialog/header-update-dialog.component';
 import { Observable } from 'rxjs';
+import { LoginService } from '../auth/login.service';
 
 @Component({
   selector: 'app-headers',
@@ -13,13 +14,17 @@ import { Observable } from 'rxjs';
   styleUrls: ['./headers.component.css'],
 })
 export class HeadersComponent implements OnInit {
+  isLoggedIn : Observable<boolean>;
   displayedColumns: string[] = ['id', 'header', 'matchingString', 'update'];
+  displayedColumnsnotconnected: string[] = ['id', 'header', 'matchingString'];
   dataSource: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
 
-  isLoggedIn : Observable<boolean>;
-  constructor(private service: AppService, public Dialog: MatDialog) {}
+  
+  constructor(loginService : LoginService, private service: AppService, public Dialog: MatDialog) {
+    this.isLoggedIn = loginService.isLoggedIn();
+  }
 
   ngOnInit(): void {
     this.getHeader();

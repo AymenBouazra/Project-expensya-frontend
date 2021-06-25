@@ -134,7 +134,6 @@ export class MatchingHeaderComponent implements OnInit {
   changevalues(e, i) {
     this.selectedKey = e;
     this.options[i] = this.selectedKey;
-    // console.log(this.options);
   }
 
   confirm() {
@@ -160,7 +159,6 @@ export class MatchingHeaderComponent implements OnInit {
       .subscribe((res) => {
         this.data.push(Object.values(res));
         let keys = Object.keys(res[0]);
-        console.log(keys);
         for (let i = 0; i < this.data[0].length; i++) {
           delete (this.data[0])[i]._id
           delete (this.data[0])[i].createdAt
