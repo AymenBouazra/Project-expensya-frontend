@@ -6,7 +6,9 @@
         <span class="example-spacer"></span>
         <div class="navLinks">
             <a mat-button href="/assets/Excel-model.xlsx" class="link" type="button"> Download model </a>
+
             <button mat-button class="link" routerLink="/matching-header"  *ngIf="(isLoggedIn | async)" > Import file </button>
+
             <button mat-button class="link" routerLink="/headers" > Available headers </button>
             
             
