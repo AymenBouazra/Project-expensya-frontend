@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { HeaderUpdateDialogComponent } from '../header-update-dialog/header-update-dialog.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-headers',
@@ -17,6 +18,7 @@ export class HeadersComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
 
+  isLoggedIn : Observable<boolean>;
   constructor(private service: AppService, public Dialog: MatDialog) {}
 
   ngOnInit(): void {
