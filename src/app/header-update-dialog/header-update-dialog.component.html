@@ -8,7 +8,7 @@
             <mat-form-field class="example-full-width">
                 <mat-label>String {{i+1}} </mat-label>
                 <input type="text" matInput [formControl]="formMatchingString.controls[i]" placeholder="Type a matching string here">
-                <div *ngIf="submitted && string.invalid || string.dirty || string.touched"
+                <div *ngIf="submitted && (string.invalid || string.dirty || string.touched)"
                 class="alert alert-danger">
                 <mat-error>
                     Please enter a valid string.
