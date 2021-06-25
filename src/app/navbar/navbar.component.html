@@ -4,9 +4,9 @@
             <img src="assets/expensya.png"  alt="">
         </div>
         <span class="example-spacer"></span>
-        <div *ngIf="(isLoggedIn | async)" class="navLinks">
+        <div class="navLinks">
             <a mat-button href="/assets/Excel-model.xlsx" class="link" type="button"> Download model </a>
-            <button mat-button class="link" routerLink="/matching-header" > Import file </button>
+            <button mat-button class="link" routerLink="/matching-header"  *ngIf="(isLoggedIn | async)" > Import file </button>
             <button mat-button class="link" routerLink="/headers" > Available headers </button>
             
             
