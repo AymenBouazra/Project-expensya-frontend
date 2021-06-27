@@ -4,6 +4,8 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { LoginService } from './login.service';
+import jwt_decode from "jwt-decode";
+
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const isSubmitted = form && form.submitted;
@@ -26,6 +28,7 @@ export class AuthComponent implements OnInit {
   constructor(private loginService: LoginService,private router:Router,private snackbar:MatSnackBar ) { }
   
   ngOnInit(): void {
+    this.redirectToHeadersIfConnected()
   }
   
   SignIn(){
@@ -46,5 +49,25 @@ export class AuthComponent implements OnInit {
         alert("Incorrect information, Please check your email and password.");
       })
   } 
+
+  redirectToHeadersIfConnected(){
+    const token = localStorage.getItem('token')
+    if (token !== null) {
+      const expire = this.isExpiredToken(token)
+      if (expire) {
+        this.router.navigateByUrl('/headers');
+        
+      }
+    }
+  }
+
+  isExpiredToken(token: string): boolean {
+    let decoded: any = jwt_decode(token);
+    const expireDate = new Date();
+    expireDate.setUTCDate(decoded.exp);
+    const currentDate = new Date();
+    return (expireDate.valueOf() > currentDate.valueOf());
+  }
+
   matcher = new MyErrorStateMatcher();
 }
