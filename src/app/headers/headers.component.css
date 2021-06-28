@@ -1,5 +1,9 @@
-table {
-    border-spacing: 0px !important;
+  .centered {
+    text-align: center;
+  }
+
+  table {
+    margin-bottom: 20px;
   }
   
   tr,
@@ -11,26 +15,60 @@ table {
   }
 
   .header{
-    background-color:rgb(0, 83, 160); ;
+    background-color:rgb(55, 125, 255);
     color: white
   }
 
   .container{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    min-height: 550px;
+    max-height: 684px;
+    height: 100%;
+    margin: 40px 30px;
   }
+
   h1{
-      padding: 20px;
-      font-size: 32px;
-      font-weight: 500;
-      color: rgb(0, 83, 160);
+    color: rgba(47,69,92,1.0);
+    font-size: 32px;
+    font-weight: 700;
+    text-align: left;
+    display: block;
   }
+
+  h1::after {
+    content: '';
+    display: block;
+    background-color: rgb(55, 125, 255);
+    height: 5px;
+    border-radius: 3px;
+    width: 70px;
+    margin: 15px 3px;
+}
+
   table {
-    width: 80%;
+    width: 100%;
   }
   
+  table td, table th {
+    border: 1px solid #ddd;
+    font-size: 16px;
+    padding: 10px 20px !important;
+  }
+  
+  table tr:nth-child(even){background-color: #f2f2f2;}
+  
+  table tr:hover {background-color: #eaeaea;}
+  
+  table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: rgb(55, 125, 255);
+    color: white;
+    font-weight: 600;
+  }
+
   th.mat-sort-header-sorted {
     color: black;
   }
@@ -49,13 +87,26 @@ table {
   th.matchingStringWidth{
     width: auto;
   }
+
+  .mat-sort-header-arrow:hover  , .mat-sort-header-arrow:active {
+    color: #fff !important;
+    background: #fff !important;
+    font-size: 40px;
+  }
   
   .updateAction{
-    background-color: rgb(55, 125, 255) !important;
-    color: white !important;
+    background-color: transparent;
+    color: #25db73;
+    border: 2px solid #25db73;
+    padding: 2px 10px;
+    min-width: auto !important;
+    transition: all .3s ease-out;
   }
-  td,th{
-   padding: 0 20px !important;
+
+  .updateAction:active, .updateAction:hover {
+    background-color: #25db73;
+    color: #fff;
+    transition: all .3s ease-out;
   }
 
   th.update{

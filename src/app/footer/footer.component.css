@@ -1,0 +1,17 @@
+.footer {
+    background: rgba(47,69,92,1.0);
+    display: block;
+    padding: 15px 0px;
+    position: sticky;
+    width: 100%;
+    bottom: 0;
+    z-index: 5;
+}
+
+.footer p {
+    font-size: 14px;
+    color: #fff;
+    padding: 0 30px;
+    margin: 0;
+    text-align: right;
+}
