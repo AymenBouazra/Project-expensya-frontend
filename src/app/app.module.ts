@@ -28,6 +28,11 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { TokenInterceptor } from './http-interceptor/token.interceptor';
 import { HeaderUpdateDialogComponent } from './header-update-dialog/header-update-dialog.component';
+import { MainNavbarComponent } from './main-navbar/main-navbar.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { FooterComponent } from './footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +41,9 @@ import { HeaderUpdateDialogComponent } from './header-update-dialog/header-updat
     ProgressComponent,
     DndDirective,
     HeadersComponent,
-    HeaderUpdateDialogComponent
+    HeaderUpdateDialogComponent,
+    MainNavbarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -59,6 +66,9 @@ import { HeaderUpdateDialogComponent } from './header-update-dialog/header-updat
     MatPaginatorModule,
     MatDialogModule,
     MatSortModule,
+    LayoutModule,
+    MatSidenavModule,
+    MatListModule,
   ],
 
   providers: [{

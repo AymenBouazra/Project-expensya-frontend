@@ -4,6 +4,14 @@
   justify-content: center;
   padding: 15px;
 }
+
+.container h1 {
+  color: rgba(47,69,92,1.0);
+  font-size: 24px;
+  font-weight: 700;
+  text-align: left;
+  display: block;
+}
 .example-form {
   width: 100%;
 }
@@ -16,17 +24,39 @@
 }
 
 mat-label {
-  font-size: 20px;
+  font-size: 18px;
 }
+
+input.mat-input-element {
+  margin-top: 10px;
+}
+
 .addContaier{
   display: flex;
-  justify-content: flex-end;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 .addButton{
-  width: 50px !important;
-  background-color: rgb(105, 211, 0) !important;
-  color: white !important;
-  margin: 20px;
+  background-color: #fff;
+  color: #25db73;
+  border: 2px solid #25db73;
+  padding: 6px 10px;
+  border-radius: 3px;
+  min-width: auto !important;
+  transition: all .3s ease-out;
+  cursor: pointer;
+}
+
+.addButton:hover, .addButton:active{
+  background-color: #25db73;
+  color: #fff;
+  transition: all .3s ease-out;
+}
+
+.field-wrapper {
+  padding: 10px 0px 10px 0px;
+  margin: 0 80px 0 0;
 }
 
 .inputs{
@@ -34,9 +64,28 @@ mat-label {
   flex-direction: row;
 }
 
-.remove{
-  background-color: rgb(255, 58, 58) !important;
+.buttonRemove{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.remove{
+  background-color: #fff;
+  color: rgb(255, 58, 58);
+  border-radius: 3px;
+  border: 2px solid rgb(255, 58, 58);
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: all .3s ease-out;
+}
+
+.remove:hover, .remove:active{
+  background-color: rgb(255, 58, 58);
+  color: #fff;
+  transition: all .3s ease-out;
+}
+
 .alert{
   background-color: #fff0f0;
   color: #820000;
@@ -52,6 +101,11 @@ mat-label {
   width: 150px;
   background-color: cornflowerblue !important;
   color: rgb(255, 255, 255) !important;
+}
+
+.cancel-icon {
+  font-size: 16px;
+  line-height: 21px;
 }
 
 .cancel{
