@@ -1,0 +1,28 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class=" sidebarbg sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    <mat-toolbar class="menu">Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item href="/assets/Excel-model.xlsx" type="button"> Download model </a>
+      <a mat-list-item routerLink="/matching-header"  *ngIf="(isLoggedIn | async)" > Import file </a>
+      <a mat-list-item routerLink="/headers" > Available headers </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar  class="container">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <div class="expensyaLogo">
+        <a routerLink="/headers"><img src="assets/expensya.png" alt=""></a>
+      </div>
+      <button mat-button class="logout" (click)="logout()" *ngIf="(isLoggedIn | async)">Logout <i
+          class="fas fa-sign-out-alt"></i> </button>
+      <button mat-button class="logout" routerLink="/login" *ngIf="!(isLoggedIn | async)">Login <i
+          class="fas fa-sign-in-alt"></i> </button>
+    </mat-toolbar>
+    <ng-content></ng-content>
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

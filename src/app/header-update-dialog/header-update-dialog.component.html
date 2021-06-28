@@ -1,11 +1,12 @@
 <div class="container">
-    <h1 style="margin: 20px;">Update matching string</h1>
+    
     <div class="addContaier">
-        <button mat-button type="button" class="addButton" (click)="addString()"><mat-icon>add</mat-icon></button>
+        <h1>Update matching string</h1>
+        <button type="button" class="addButton" (click)="addString()"><mat-icon>add</mat-icon></button>
     </div>
     <form (ngSubmit)="updateStrings()">
         <div *ngFor="let string of formMatchingString.controls; let i=index" class="inputs">
-            <mat-form-field class="example-full-width">
+            <mat-form-field class="field-wrapper example-full-width">
                 <mat-label>String {{i+1}} </mat-label>
                 <input type="text" matInput [formControl]="formMatchingString.controls[i]" placeholder="Type a matching string here">
                 <div *ngIf="submitted && (string.invalid || string.dirty || string.touched)"
@@ -16,10 +17,12 @@
                 
                 </div>
             </mat-form-field>
-            <button mat-mini-fab class="remove" (click)="removeString(i)"><mat-icon>delete</mat-icon></button>
+            <div class="buttonRemove">
+                <button class="remove" (click)="removeString(i)"><mat-icon>delete</mat-icon></button>
+            </div>
         </div>
         <div class="footerButtons">
-            <button mat-button class="cancel" type="button" (click)="cancel()"> <mat-icon>arrow_back_ios</mat-icon> Cancel</button>
+            <button mat-button class="cancel" type="button" (click)="cancel()"> <mat-icon class="cancel-icon">arrow_back_ios</mat-icon> Cancel</button>
             <button mat-button class="update" type="submit" >Update <mat-icon>publish</mat-icon></button>
         </div>
     </form>

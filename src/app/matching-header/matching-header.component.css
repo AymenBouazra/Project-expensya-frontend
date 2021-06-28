@@ -11,16 +11,29 @@
   height: 300px;
   padding: 2rem;
   text-align: center;
-  border: 3px solid #008cff;
   position: relative;
   margin: 30px;
-  border-radius: 10px;
+  border-radius:5px;
   display: flex;
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
   background-color: #f4fbff;
-  transition: 1s;
+  transition: all .3s ease-out;
+}
+
+.container:hover {
+  transition: all .3s ease-out;
+  background-color: #e7f7ff;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  min-height: 550px;
+  max-height: 684px;
+  height: 100%;
+  margin: 40px 30px;
 }
 
 @media only screen and (max-width: 1120px) {
@@ -93,12 +106,6 @@
   }
 }
 
-.container:hover {
-  border: 3px solid #01bbc8;
-  transition: 1s;
-  background-color: #e7f7ff;
-}
-
 .fa-cloud-upload-alt {
   width: 60px;
   height: 50px;
@@ -146,9 +153,10 @@ section {
   color: white;
   font-size: 28px;
   font-weight: 400;
-  border-radius: 21.5px;
+  border-radius: 3px;
   background-color: #20b6db;
   padding: 15px 25px;
+
 }
 
 .dragAndDrop {
@@ -227,11 +235,13 @@ section {
 }
 .similarityKey {
   font-size: 23px;
-  color: rgb(71, 114, 253);
+  color: rgb(16, 54, 179);
 }
 
-.score{
-  font-size: 23px; color: rgb(206, 151, 0); float : right;
+.percentage {
+  font-size: 23px;
+  color: rgb(206, 151, 0);
+  float: right;
 }
 .notMatched {
   box-shadow: 0px 4px 16px rgb(51 102 255 / 20%);
@@ -239,7 +249,7 @@ section {
   min-height: 700px;
   width: 50%;
   margin: 10px;
-  padding: 14px;
+  padding: 24px;
 }
 
 .matched {
@@ -249,7 +259,7 @@ section {
   border-radius: 15px;
   min-height: 700px;
   width: 50%;
-  padding: 14px;
+  padding: 24px;
   margin: 10px;
 }
 
@@ -289,7 +299,6 @@ section {
   color: #3366ff;
   flex-direction: row;
   justify-content: space-between;
-  padding: 10px;
 }
 
 .before {
@@ -307,13 +316,12 @@ section {
 }
 
 .matchedList {
-  padding: 10px;
   font-size: 23px;
   font-weight: 400;
   display: flex;
   flex-direction: row;
   border-radius: 5px;
-  margin-top: 20px;
+  margin: 30px 0 30px 0;
 }
 
 .startImport {

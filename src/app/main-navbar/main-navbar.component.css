@@ -1,0 +1,97 @@
+
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+  background: url('/assets/sidebarbg.png'), rgb(52,105,255);
+  background: url('/assets/sidebarbg.png'), linear-gradient(180deg, rgba(52,105,255,1) 0%, rgba(45,81,184,1) 100%);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 0% 20%;
+}
+ 
+.menu{
+  color: #25db73;
+font-weight: 800;
+text-transform: uppercase
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.sidenav .mat-nav-list .mat-list-item {
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 5px;
+  transition: all .3s ease-out;
+}
+
+.mat-list-option:hover, .mat-list-option:focus, .mat-nav-list .mat-list-item:hover, .mat-nav-list .mat-list-item:focus, .mat-action-list .mat-list-item:hover, .mat-action-list .mat-list-item:focus {
+  color: rgb(52,105,255) !important;
+  background: #fff;
+  transition: all .3s ease-out;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.navbar{
+  box-shadow: 0px 4px 4px rgb(51 102 255 / 10%);
+}
+
+.container{
+  width: auto;
+  padding: 0 30px;
+  display: flex;
+  justify-content: space-between;
+  height: 70px;
+}
+
+.logout{
+  font-size: 20px;
+  border-radius: 15px;
+  margin: 5px;
+  color: black;
+  background-color: rgb(255, 255, 255);
+}
+
+.logout:hover{
+  color: rgb(0, 153, 255);
+  background-color: rgb(255, 255, 255) !important;
+  border-radius: 5px;
+}
+
+.expensyaLogo img{
+  width: 135px;
+}
+.navLinks{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+margin-right: 50px;
+}
+.link{
+  font-size: 22px;
+  border-radius: 15px;
+  margin: 5px;
+  color: rgb(0, 153, 255);
+  transition: 0.5s;
+}
+
+.link:hover{
+  color: blue;
+  transition: 0.5s;
+  background-color: rgb(255, 255, 255) !important;
+}
+
