@@ -12,8 +12,8 @@
             <div class="files-list">
                 <div class="single-file" *ngFor="let file of files; let i = index">
                     <div class="info">
-                        <img src="assets/csv-icon.png" *ngIf="" width="30px"alt="file">
-                        <img src="assets/xlsx-icon.png" width="30px"alt="file">
+                        <img src="assets/csv-icon.png" *ngIf="csv" width="30px"alt="file">
+                        <img src="assets/xlsx-icon.png" *ngIf="!csv" width="30px"alt="file">
                         <h4 class="name">
                             {{ file?.name }}
                         </h4>

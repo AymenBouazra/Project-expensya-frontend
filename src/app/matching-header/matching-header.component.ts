@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./matching-header.component.css']
 })
 export class MatchingHeaderComponent implements OnInit {
+  csv = false;
   tab = [];
   values = [];
   data = [];
@@ -70,6 +71,10 @@ export class MatchingHeaderComponent implements OnInit {
         }, 200);
       }
     }, 1000);
+    if (this.files[0].name.includes('.csv')) {
+      this.csv = true
+    }
+    
   }
 
   prepareFilesList(files: Array<any>) {
