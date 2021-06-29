@@ -1,11 +1,11 @@
 .footer {
     background: rgba(47,69,92,1.0);
-    display: block;
     padding: 15px 0px;
-    position: sticky;
     width: 100%;
+    position: fixed;
+    left: -15px;
+    right: 0;
     bottom: 0;
-    z-index: 5;
 }
 
 .footer p {

@@ -26,6 +26,8 @@
     max-height: 684px;
     height: 100%;
     margin: 40px 30px;
+    overflow-x: scroll;
+    overflow-y: scroll;
   }
 
   h1{
@@ -86,6 +88,10 @@
 
   th.matchingStringWidth{
     width: auto;
+  }
+
+  mat-paginator{
+    padding-bottom: 50px;
   }
 
   .mat-sort-header-arrow:hover  , .mat-sort-header-arrow:active {

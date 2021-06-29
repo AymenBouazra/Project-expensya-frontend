@@ -12,7 +12,8 @@
             <div class="files-list">
                 <div class="single-file" *ngFor="let file of files; let i = index">
                     <div class="info">
-                        <img src="assets/file-icon.png" width="45px" alt="file">
+                        <img src="assets/csv-icon.png" *ngIf="" width="30px"alt="file">
+                        <img src="assets/xlsx-icon.png" width="30px"alt="file">
                         <h4 class="name">
                             {{ file?.name }}
                         </h4>
@@ -25,7 +26,7 @@
                         <div class="example-flex-container">
                             <button mat-flat-button class="submitFile" type="button"
                                 (click)="uploadFileAndMatching(i,stepper)">
-                                Upload this file
+                                Upload file
                             </button>
                             <button mat-flat-button color="error" class="delete" alt="file" (click)="deleteFile(i)"
                                 aria-label="Example icon button with a delete icon">
@@ -41,7 +42,7 @@
                 <div class="notMatched">
                     <div>
                         <div>
-                            <span style="font-size: 30px; font-weight: 500; color: rgb(71, 114, 253);" *ngIf="!nothingToMatch">
+                            <span class="matchingTable" *ngIf="!nothingToMatch">
                                 Matching table
                             </span>
                         </div>
@@ -57,7 +58,7 @@
                                     </div>
                                     <div class="options">
                                         <div>
-                                            <mat-form-field appearance="fill" width="50%">
+                                            <mat-form-field appearance="fill">
                                                 <mat-label>Choose Option</mat-label>
                                                 <mat-select>
                                                     <mat-option (click)="changevalues(list[0],i)"
@@ -91,16 +92,15 @@
                 <div class="matched" formArrayName="matched">
                     <div class="">
                         <div class="transformation">
-                            <div>Before</div>
-                            <div>After</div>
+                            <span class="transform">Before</span>
+                            <span class="transform">After</span>
                         </div>
                         <div class="matchedList" *ngFor=" let matched of getMatched.controls ; let i = index">
         
                             <div class="before">
                                 <label for="">{{getMatched.controls[i].get('header').value}} </label>
                             </div>
-                            <div class="arrow"><i class="fa fa-chevron-right"></i><i class="fa fa-chevron-right"></i> <i
-                                    class="fa fa-chevron-right"></i> </div>
+                            <div class="arrow"><i class="fa fa-chevron-right"></i> </div>
                             <div class="after">
                                 <label for="">{{getMatched.controls[i].get('matchingString').value}} </label>
                             </div>
@@ -114,15 +114,13 @@
                         </button>
                     </div>
                 </div>
-        
             </div>
-            
         </mat-step>
         <mat-step>
             <ng-template matStepLabel>Done</ng-template>
             <div style="text-align: center;">
                 <h1>Imported data</h1>
-                <div>
+                <div class="table-container">
                     <table id="data" class="table">
                         <tr>
                             <td id="headerRow">
