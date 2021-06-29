@@ -28,6 +28,7 @@ isLoggedIn : Observable<boolean>;
   
   logout() {
     this.loginService.logout().subscribe((response: any) => {
+      this.loginService.changeLoginBehavior(false)
       localStorage.removeItem('token');
       this.router.navigateByUrl('/login');
     })

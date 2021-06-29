@@ -16,14 +16,16 @@ export class LoginService {
   constructor(private http:HttpClient) { }
 
   SignIn(data:any){
-    this.isLoginSubject.next(true);
     return this.http.post(`${this.baseUrl}/login`,data)
   }
   logout(){
-    this.isLoginSubject.next(false);
     return this.http.get(`${this.baseUrl}/logout`)
   }
   hasToken(): boolean {
     return !!localStorage.getItem('token');
+  }
+  
+  changeLoginBehavior(value:boolean){
+    this.isLoginSubject.next(value);
   }
 }
