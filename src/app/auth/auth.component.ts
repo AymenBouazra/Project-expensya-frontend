@@ -34,7 +34,7 @@ export class AuthComponent implements OnInit {
   SignIn(){
     this.submitted = true;
     if (this.loginForm.invalid) {
-      alert("Incorrect information, Please check your email and password.");
+      
       return;
     }
     this.loginService.SignIn(this.loginForm.value).subscribe((response: any) => {
@@ -42,11 +42,14 @@ export class AuthComponent implements OnInit {
       this.snackbar.open('Successfully logged in', 'Close', {
         duration: 3000
       });
-      this.router.navigate(['/matching-header'])
+      this.router.navigate(['/matching-header']);
+      this.loginService.changeLoginBehavior(true);
     },
       (error) => {
         console.log(error);
-        alert("Incorrect information, Please check your email and password.");
+        this.snackbar.open('Incorrect information, Please check your email and password.','Close',{
+          duration: 3000
+        });
       })
   } 
 
