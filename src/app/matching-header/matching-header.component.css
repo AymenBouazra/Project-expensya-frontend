@@ -79,7 +79,7 @@
     text-align: justify;
     white-space: nowrap;
     font-size: 4vw;
-    padding-bottom: 10px;
+    padding: 20px;
   }
 
   h3.browseFile {
@@ -118,16 +118,11 @@
     text-align: justify;
     white-space: nowrap;
     font-size: 4vw;
-    padding-bottom: 10px;
   }
 
   span.browseFile {
     white-space: nowrap;
-    width: 150px;
-    height: 50px;
     font-size: 20px;
-    padding: 20px 8px 0px 8px;
-    margin: 15px auto 15px auto;
   }
 
   .single-file {
@@ -200,7 +195,6 @@ img .file-icon {
 
 .dragAndDrop {
   font-size: 40px;
-  margin: 10px auto 10px auto;
   font-weight: 600;
   color: #38424c;
 }
