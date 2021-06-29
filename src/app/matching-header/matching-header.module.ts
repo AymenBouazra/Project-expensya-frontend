@@ -17,7 +17,6 @@ import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDividerModule } from '@angular/material/divider';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -42,8 +41,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     MatSelectModule,
     MatDividerModule,
-    // ReactiveFormsModule,
-    // FormsModule
   ]
 })
 export class MatchingHeaderModule { }
