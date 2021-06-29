@@ -23,7 +23,7 @@ import { HeadersComponent } from './headers/headers.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { TokenInterceptor } from './http-interceptor/token.interceptor';
 import { HeaderUpdateDialogComponent } from './header-update-dialog/header-update-dialog.component';
